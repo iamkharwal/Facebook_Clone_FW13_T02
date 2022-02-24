@@ -10,13 +10,17 @@
 }
 
 .postWrapper {
-  padding: 20px;
+  padding: 20px 0px 20px 0px;
 }
 
 .postTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0px 20px 0px 20px;
+}
+.postDesc{
+   padding: 0px 20px 0px 20px;
 }
 
 .postTopLeft {
@@ -42,7 +46,7 @@
 }
 
 .postCenter {
-  margin: 20px 0;
+  margin: 0px 0;
 }
 
 .postImg {
@@ -56,6 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+    padding: 20px 20px 0px 20px;
 }
 
 .postBottomLeft {

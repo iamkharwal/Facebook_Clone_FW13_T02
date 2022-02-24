@@ -36,8 +36,11 @@ export default function Post({ post }) {
             <MoreVert />
           </div>
         </div>
-        <div className="postCenter">
+        <br />
+        <div className="postDesc">
           <span className="postText">{post?.desc}</span>
+        </div>
+        <div className="postCenter">
           <img className="postImg" src={post.photo} alt="" />
         </div>
         <div className="postBottom">
@@ -61,7 +64,7 @@ export default function Post({ post }) {
           </div>
         </div>
         <hr />
-        <Row className="text-center">
+        <Row className="text-center px-3">
           <Col md={4}>
             <Button variant="white">
               <AiOutlineLike /> Like
