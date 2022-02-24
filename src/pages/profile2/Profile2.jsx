@@ -85,7 +85,7 @@ export default function Profile2() {
       <Container fluid className="bg-light">
         <Container className="col-md-8 p-0 m-auto">
           <Row className="mt-1 pt-4 mx-auto">
-            <Col md={5} className="sidebar pt-0">
+            <Col md={5} className="sidebar2 pt-0">
               <LeftSideBar />
             </Col>
             <Col md={7} className="pe-4">
