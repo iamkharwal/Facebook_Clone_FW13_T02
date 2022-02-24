@@ -9,7 +9,7 @@ import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
 export default function Home() {
   return (
     <>
-      <Topbar />
+      <Header />
       <Container fluid style={{ backgroundColor: "rgb(240, 240, 240)" }}>
         <Row>
           <Col md={3}>
