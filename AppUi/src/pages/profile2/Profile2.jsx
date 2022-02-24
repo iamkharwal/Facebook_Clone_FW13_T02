@@ -10,6 +10,7 @@ import { MdModeEditOutline } from "react-icons/md";
 import { LeftSideBar } from "./LeftSideBar";
 
 export default function Profile2() {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <>
       <Topbar />
@@ -17,7 +18,7 @@ export default function Profile2() {
         <Container style={{ width: "75%" }}>
           <Col style={{ position: "relative" }}>
             <img
-              src="assets/post/3.jpeg"
+              src={`${PF}post/3.jpeg`}
               className="profileCoverImg img-fluid"
             />
             <Button className="edit-cover-btn btn btn-light btn-lg rounded-5">
@@ -28,7 +29,7 @@ export default function Profile2() {
             <Col md={3} className="d-flex flex-row-reverse pe-4">
               <img
                 className="profileUserImg2"
-                src="assets/person/logo.jpg"
+                src={`${PF}/person/logo.jpg`}
                 alt=""
               />
             </Col>
@@ -37,17 +38,17 @@ export default function Profile2() {
               <h5 className="profileInfoDesc">196 Friends</h5>
               <img
                 className="shareProfileImg2"
-                src="/assets/person/1.jpeg"
+                src={`${PF}person/1.jpeg`}
                 alt=""
               />
               <img
                 className="shareProfileImg2"
-                src="/assets/person/1.jpeg"
+                src={`${PF}person/1.jpeg`}
                 alt=""
               />
               <img
                 className="shareProfileImg2"
-                src="/assets/person/1.jpeg"
+                src={`${PF}person/1.jpeg`}
                 alt=""
               />
             </Col>
