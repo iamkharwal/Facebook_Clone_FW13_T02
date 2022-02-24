@@ -1,4 +1,5 @@
 import React from 'react'
+import {useState} from "react"
 import "./Header.css"
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
@@ -11,8 +12,15 @@ import AddIcon from "@mui/icons-material/Add"
 import ForumIcon from "@mui/icons-material/Forum"
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import { Results } from "./Res";
+
+// import {show} from "../App"
 
 function Header() {
+
+  const [showResults, setShowResults] = React.useState(false)
+  
+  
   return (
     <div className='header'>
 
@@ -45,7 +53,7 @@ function Header() {
         <div className='header__right'>
           <div className='header__info'>
             <Avatar />
-            <h4>Anurag</h4>
+            <h4>Anurag Singh</h4>
           </div>
           <IconButton>
             <AddIcon/>
@@ -56,11 +64,19 @@ function Header() {
           <IconButton>
             <NotificationsActiveIcon/>
           </IconButton>
-          <IconButton>
-            <ExpandMoreIcon/>
+          <IconButton onClick={() => {
+    setShowResults(!showResults)
+  }}>
+            <ExpandMoreIcon />
+            
           </IconButton>
         </div>
 
+    <div>
+      
+
+    </div>
+    { showResults ? <Results /> : null }
     </div>
   )
 }
