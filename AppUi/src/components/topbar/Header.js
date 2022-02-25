@@ -12,9 +12,11 @@ import AddIcon from "@mui/icons-material/Add"
 import ForumIcon from "@mui/icons-material/Forum"
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+
 import { Results } from "./Res";
 
 // import {show} from "../App"
+
 
 function Header() {
 
@@ -22,33 +24,35 @@ function Header() {
   
   
   return (
-    <div className='header'>
+    <div className="header">
+      <div className="header__left">
+        
 
-        <div className='header__left'>
-            <img alt='facebook' src='https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg'/>
-            <div className='header__input'>
-                <SearchIcon/>
-                <input placeholder='Search Facebook' type="text" />
-            </div>
+        <div className="header__input">
+          <SearchIcon />
+          <input placeholder="Search Facebook" type="text" />
         </div>
+      </div>
 
-        <div className='header__center'>
-          <div className='header__option header__option--active'>
-            <HomeIcon fontSize="large"/>
-          </div>
-          <div className='header__option'>
-            <FlagIcon fontSize="large"/>
-          </div>
-          <div className='header__option'>
-            <SubscriptionsIcon fontSize="large"/>
-          </div>
-          <div className='header__option'>
-            <StorefrontIcon fontSize="large"/>
-          </div>
-          <div className='header__option'>
-            <SupervisedUserCircleIcon fontSize="large"/>
-          </div>
+      <div className="header__center">
+        <div className="header__option header__option--active">
+          <Link to="/">
+            <HomeIcon fontSize="large" />
+          </Link>
         </div>
+        <div className="header__option">
+          <FlagIcon fontSize="large" />
+        </div>
+        <div className="header__option">
+          <SubscriptionsIcon fontSize="large" />
+        </div>
+        <div className="header__option">
+          <StorefrontIcon fontSize="large" />
+        </div>
+        <div className="header__option">
+          <SupervisedUserCircleIcon fontSize="large" />
+        </div>
+      </div>
 
         <div className='header__right'>
           <div className='header__info'>
@@ -73,12 +77,13 @@ function Header() {
         </div>
 
     <div>
-      
+      { showResults ? <Results /> : null }
 
     </div>
-    { showResults ? <Results /> : null }
+    
+
     </div>
-  )
+  );
 }
 
 export default Header
