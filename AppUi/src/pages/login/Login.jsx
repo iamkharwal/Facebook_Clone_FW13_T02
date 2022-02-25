@@ -22,29 +22,31 @@ export default function Login() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Facebook</h3>
-          <span className="loginDesc">
-            Connect with friends and the world around you on Lamasocial.
-          </span>
+          <p className="loginLogo">facebook</p>
+          <p className="descrip">
+          Facebook helps you connect and share with the people in your life.
+          </p>
+          
         </div>
+        
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleClick}>
             <input
               placeholder="Email"
-              className="loginInput"
+              className="loginInput margin-def"
               type="email"
               ref={email}
               required
             />
             <input
               placeholder="Password"
-              className="loginInput"
+              className="loginInput margin-def"
               type="password"
               minLength={4}
               ref={password}
               required
             />
-            <button className="loginButton" disabled={isFetching}>
+            <button className="loginButton margin-def" disabled={isFetching}>
               {isFetching ? (
                 <CircularProgress color="white" size="20px" />
               ) : (
@@ -52,6 +54,7 @@ export default function Login() {
               )}
             </button>
             <span className="loginForgot">Forgot Password?</span>
+            <hr/>
             <button className="loginRegisterButton">
               Create a New Account
             </button>
