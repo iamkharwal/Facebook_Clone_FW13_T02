@@ -1,4 +1,4 @@
-import Profile from "./pages/Profile/profileSuggest";
+import Profile from "./pages/ConfirmProfile/ConfirmProfile";
 
 function App() {
   return <Profile />;

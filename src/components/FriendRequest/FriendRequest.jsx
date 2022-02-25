@@ -1,4 +1,4 @@
-import "./CloseFriend.css";
+import "./FriendRequest.css";
 
 export default function closeFriend({ user }) {
   return (

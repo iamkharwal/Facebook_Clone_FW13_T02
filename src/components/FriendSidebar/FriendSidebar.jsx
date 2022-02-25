@@ -1,7 +1,7 @@
-import "./sidebar.css";
+import "./FriendSidebar.css";
 
 import { Users } from "../../dummyData";
-import CloseFriend from "../CloseFriend/CloseFriend";
+import FriendRequest from "../FriendRequest/FriendRequest";
 
 export default function Sidebar() {
   return (
@@ -17,7 +17,7 @@ export default function Sidebar() {
 
         <ul className="sidebarFriendList">
           {Users.map((u) => (
-            <CloseFriend key={u.id} user={u} />
+            <FriendRequest key={u.id} user={u} />
           ))}
         </ul>
       </div>

@@ -1,5 +1,5 @@
-import "./profileSuggest.css";
-import Sidebar from "../../components/sidebar/Sidebar";
+import "./ConfirmProfile.css";
+import Sidebar from "../../components/FriendSidebar/FriendSidebar";
 
 export default function Profile() {
   return (
