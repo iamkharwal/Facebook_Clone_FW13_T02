@@ -1,5 +1,4 @@
 import React from 'react'
-import {useState} from "react"
 import "./Header.css"
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
@@ -12,21 +11,21 @@ import AddIcon from "@mui/icons-material/Add"
 import ForumIcon from "@mui/icons-material/Forum"
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-
+import { Link } from "react-router-dom";
 import { Results } from "./Res";
-
-// import {show} from "../App"
 
 
 function Header() {
-
   const [showResults, setShowResults] = React.useState(false)
-  
-  
   return (
     <div className="header">
       <div className="header__left">
-        
+      <Link to="/" style={{ textDecoration: "none" }}>
+          <img
+            alt="facebook"
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
+          />
+        </Link>
 
         <div className="header__input">
           <SearchIcon />
@@ -54,34 +53,36 @@ function Header() {
         </div>
       </div>
 
-        <div className='header__right'>
-          <div className='header__info'>
-            <Avatar src="https://lh3.googleusercontent.com/ogw/ADea4I5ewz6YUQTLr06zwJrleoZlvYH5tiRlX1wggo0dfg=s32-c-mo"/>
-            <h4>Anurag Singh</h4>
-          </div>
-          <IconButton>
-            <AddIcon/>
-          </IconButton>
-          <IconButton>
-            <ForumIcon/>
-          </IconButton>
-          <IconButton>
-            <NotificationsActiveIcon/>
-          </IconButton>
-          <IconButton onClick={() => {
+      <div className="header__right">
+        <div className="header__info">
+          <Avatar />
+          <Link
+            to="/profile/atul"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <h4>Anurag</h4>
+          </Link>
+        </div>
+        <IconButton>
+          <AddIcon />
+        </IconButton>
+        <IconButton>
+          <ForumIcon />
+        </IconButton>
+        <IconButton>
+          <NotificationsActiveIcon />
+        </IconButton>
+        <IconButton onClick={() => {
     setShowResults(!showResults)
   }}>
-            <ExpandMoreIcon />
-            
-          </IconButton>
-        </div>
+          <ExpandMoreIcon />
+        </IconButton>
+      </div>
+      <div>
+      
 
-    <div>
       { showResults ? <Results /> : null }
-
-    </div>
-    
-
+      </div>
     </div>
   );
 }
