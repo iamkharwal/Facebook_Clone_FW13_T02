@@ -4,7 +4,7 @@
   top: 50px;
 }
 
-.sidebar:hover{
+.sidebar:hover {
   overflow-y: scroll;
 }
 
@@ -19,7 +19,8 @@
 }
 
 .sidebarWrapper {
-  padding: 20px;
+  /* padding: 5px; */
+  font-weight: 500;
 }
 
 .sidebarList {
@@ -31,11 +32,16 @@
 .sidebarListItem {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  padding: 10px;
+  /* margin-bottom: 10px; */
 }
-
+.sidebarListItem:hover {
+  background-color: rgb(235, 232, 232);
+  border-radius: 10px;
+}
 .sidebarIcon {
-  margin-right: 15px;
+  margin-right: 10px;
+  width: 25px;
 }
 
 .sidebarButton {
@@ -55,5 +61,3 @@
   margin: 0;
   list-style: none;
 }
-
-
