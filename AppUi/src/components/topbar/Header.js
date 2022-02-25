@@ -12,12 +12,15 @@ import ForumIcon from "@mui/icons-material/Forum"
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { Link } from "react-router-dom";
+import { Results } from "./Res";
+
 
 function Header() {
+  const [showResults, setShowResults] = React.useState(false)
   return (
     <div className="header">
       <div className="header__left">
-        <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
           <img
             alt="facebook"
             src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
@@ -69,9 +72,16 @@ function Header() {
         <IconButton>
           <NotificationsActiveIcon />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={() => {
+    setShowResults(!showResults)
+  }}>
           <ExpandMoreIcon />
         </IconButton>
+      </div>
+      <div>
+      
+
+      { showResults ? <Results /> : null }
       </div>
     </div>
   );
