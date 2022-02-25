@@ -1,5 +1,5 @@
 .login {
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   background-color: #f0f2f5;
   display: flex;
@@ -8,9 +8,11 @@
 }
 
 .loginWrapper {
-  width: 70%;
-  height: 70%;
+  width: 80%;
+  height: 450px;
   display: flex;
+  justify-content: space-evenly;
+
 }
 
 .loginLeft,
@@ -18,7 +20,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  /* border: 1px solid black; */
+
 }
 
 .loginLogo {
@@ -26,20 +30,26 @@
   font-weight: 800;
   color: #1775ee;
   margin-bottom: 10px;
+  /* border: 1px dashed black; */
 }
 
-.loginDesc {
-  font-size: 24px;
+.descrip{
+  font-size: 30px;
+
 }
 
 .loginBox{
-    height: 300px;
+    height: 400px;
+    width: 80%;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-left: 15%;
+    margin-top: 5%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .loginInput{
@@ -85,4 +95,12 @@
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
+}
+.margin-def{
+  line-height: 0px;
+  margin-top: 5px;
+}
+.extra{
+  border: 1px solid black;
+  margin: auto;
 }
