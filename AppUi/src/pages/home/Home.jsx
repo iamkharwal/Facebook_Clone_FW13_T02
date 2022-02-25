@@ -1,15 +1,14 @@
 // import Topbar from "../../components/topbar/Topbar";
-import Header from "../../components/topbar/Header";
+
 import Sidebar from "../../components/sidebar/Sidebar";
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
-import "./home.css"
+import "./home.css";
 import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
 
 export default function Home() {
   return (
     <>
-      <Header />
       <Container fluid style={{ backgroundColor: "rgb(240, 240, 240)" }}>
         <Row>
           <Col md={3}>

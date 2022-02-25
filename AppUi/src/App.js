@@ -5,26 +5,34 @@ import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Profile2 from "./pages/profile2/Profile2";
 import Register from "./pages/register/Register";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
+import Header from "./components/topbar/Header";
+import { AuthContext } from "./context/AuthContext";
+import { useContext } from "react";
 
 function App() {
+  const { user } = useContext(AuthContext);
+
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <Route path="/profile/:username">
-          <Profile2 />
-        </Route>
-      </Switch>
-    </Router>
+    <div>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={user ? <Home /> : <Register />}></Route>
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/" /> : <Login />}
+        ></Route>
+        <Route
+          path="/register"
+          element={user ? <Navigate to="/" /> : <Register />}
+        ></Route>
+        <Route
+          path="/profile/:username"
+          element={user ? <Navigate to="/" /> : <Profile2 />}
+        ></Route>
+      </Routes>
+    </div>
   );
 }
 
