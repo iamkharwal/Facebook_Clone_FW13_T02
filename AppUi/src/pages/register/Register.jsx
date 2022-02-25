@@ -35,10 +35,10 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
-          <span className="loginDesc">
-            Connect with friends and the world around you on Lamasocial.
-          </span>
+          <p className="loginLogo">facebook</p>
+          <p className="descrip">
+            Facebook helps you connect and share with the people in your life.
+          </p>
         </div>
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleClick}>

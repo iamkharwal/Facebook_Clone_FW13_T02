@@ -20,6 +20,7 @@ function Header() {
   const { user } = useContext(AuthContext);
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [showResults, setShowResults] = React.useState(false);
 
   return (
     <div className="header">
@@ -85,10 +86,15 @@ function Header() {
         <IconButton>
           <NotificationsActiveIcon />
         </IconButton>
-        <IconButton>
+        <IconButton
+          onClick={() => {
+            setShowResults(!showResults);
+          }}
+        >
           <ExpandMoreIcon />
         </IconButton>
       </div>
+      <div>{showResults ? <Results /> : null}</div>
     </div>
   );
 }
