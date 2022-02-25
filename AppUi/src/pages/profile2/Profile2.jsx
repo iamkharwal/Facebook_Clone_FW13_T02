@@ -8,16 +8,30 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import { IoMdAddCircle } from "react-icons/io";
 import { MdModeEditOutline } from "react-icons/md";
 import { LeftSideBar } from "./LeftSideBar";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function Profile2() {
+  const [user, setUser] = useState({});
+  const { username } = useParams();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?username=${username}`);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, [username]);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <>
-      <Topbar />
       <Container fluid className="shadowLg bg-white">
         <Container style={{ width: "75%" }}>
           <Col style={{ position: "relative" }}>
             <img
-              src="assets/post/3.jpeg"
+              src={user.converPicture || PF + "person/noCover.png"}
               className="profileCoverImg img-fluid"
             />
             <Button className="edit-cover-btn btn btn-light btn-lg rounded-5">
@@ -28,12 +42,12 @@ export default function Profile2() {
             <Col md={3} className="d-flex flex-row-reverse pe-4">
               <img
                 className="profileUserImg2"
-                src="assets/person/logo.jpg"
+                src={user.profilePicture || PF + "person/noAvatar.png"}
                 alt=""
               />
             </Col>
             <Col md={3} className="p-3">
-              <h1 className="profileInfoName">ATul KhaRwal</h1>
+              <h1 className="profileInfoName">{user.username}</h1>
               <h5 className="profileInfoDesc">196 Friends</h5>
               <img
                 className="shareProfileImg2"
@@ -86,10 +100,10 @@ export default function Profile2() {
         <Container className="col-md-8 p-0 m-auto">
           <Row className="mt-1 pt-4 mx-auto">
             <Col md={5} className="sidebar2 pt-0">
-              <LeftSideBar />
+              <LeftSideBar user={user} />
             </Col>
             <Col md={7} className="pe-4">
-              <Feed />
+              <Feed username={username} />
             </Col>
           </Row>
         </Container>
