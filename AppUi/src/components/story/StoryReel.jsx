@@ -8,14 +8,14 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import StoryDisplay from './StoryDisplay';
 
 const StoryReel = () => {
-    const { storyDiv, togglestoryDiv, togglestoryDisplay } = useContext(DisplayStoryContext);
-    console.log(storyDiv)
+    const story = useContext(DisplayStoryContext);
+    console.log(story);
     return (
-        <div>
-            <div className="displayStory" style={{ display: storyDiv ? "block" : "none" }}>
+      <div>
+        {/* <div className="displayStory" style={{ display: storyDiv ? "block" : "none" }}>
                 <StoryDisplay />
-            </div>
-            <div style={{ display: !storyDiv ? "block" : "none" }} >
+            </div> */}
+        {/* <div style={{ display: !storyDiv ? "block" : "none" }} >
 
                 <div className="storyreel">
 
@@ -52,8 +52,8 @@ const StoryReel = () => {
                         title="Raj Agrawal"
                     />
                 </div>
-            </div>
-        </div >
+            </div> */}
+      </div>
     );
 };
 

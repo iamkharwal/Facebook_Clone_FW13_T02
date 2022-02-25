@@ -17,7 +17,11 @@ export const DisplayStoryContextProvider = ({children})=>{
         setStoryDiv(!storyDiv);
     }
 
-    return <DisplayStoryContext.Provider value={{storyDiv, togglestoryDiv,  togglestoryDisplay, imageUrl}}>
-             {children}
-        </DisplayStoryContext.Provider>
+    return (
+      <DisplayStoryContext.Provider
+        value={{ storyDiv, togglestoryDiv, togglestoryDisplay, imageUrl }}
+      >
+        {children}
+      </DisplayStoryContext.Provider>
+    );
 }
