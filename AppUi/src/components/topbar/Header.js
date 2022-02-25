@@ -94,7 +94,7 @@ function Header() {
           <ExpandMoreIcon />
         </IconButton>
       </div>
-      <div>{showResults ? <Results /> : null}</div>
+      {/* <div>{showResults ? <Results /> : null}</div> */}
     </div>
   );
 }
