@@ -1,19 +1,26 @@
-import React from 'react'
-import "./Header.css"
-import SearchIcon from '@mui/icons-material/Search';
-import HomeIcon from '@mui/icons-material/Home';
-import FlagIcon from '@mui/icons-material/Flag';
-import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
-import StorefrontIcon from '@mui/icons-material/Storefront';
-import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
-import { Avatar, IconButton } from '@mui/material';
-import AddIcon from "@mui/icons-material/Add"
-import ForumIcon from "@mui/icons-material/Forum"
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+/** @format */
+
+import React, { useContext } from "react";
+import "./Header.css";
+import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home";
+import FlagIcon from "@mui/icons-material/Flag";
+import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
+import { Avatar, IconButton } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import ForumIcon from "@mui/icons-material/Forum";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 function Header() {
+  const { user } = useContext(AuthContext);
+
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className="header">
       <div className="header__left">
@@ -52,12 +59,21 @@ function Header() {
 
       <div className="header__right">
         <div className="header__info">
+          {/* <Link to={"/profile/${user.username}"}></Link> */}
+          {/* <img
+            src={
+              user.profilePicture
+                ? PF + user.profilePicture
+                : PF + "person/noAvatar.png"
+            }
+          /> */}
           <Avatar />
           <Link
             to="/profile/atul"
             style={{ textDecoration: "none", color: "black" }}
           >
-            <h4>Anurag</h4>
+            <h4>Atul</h4>
+            {/* <h4>{user.username}</h4> */}
           </Link>
         </div>
         <IconButton>
@@ -77,4 +93,4 @@ function Header() {
   );
 }
 
-export default Header
+export default Header;

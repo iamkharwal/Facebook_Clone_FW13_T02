@@ -5,6 +5,7 @@ import { loginCall } from "../../apiCalls";
 import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
+import { Link } from "react-router-dom";
 export default function Login() {
   const email = useRef();
   const password = useRef();
@@ -52,9 +53,11 @@ export default function Login() {
               )}
             </button>
             <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">
-              Create a New Account
-            </button>
+            <Link to="/register" style={{ textAlign: "center" }}>
+              <button className="loginRegisterButton">
+                Create a New Account
+              </button>
+            </Link>
           </form>
         </div>
       </div>
