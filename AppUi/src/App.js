@@ -18,8 +18,8 @@ function App() {
       <Header />
 
       <Routes>
-        {/* <Route path="/" element={user ? <Home /> : <Register />}></Route> */}
-        <Route path="/" element={ <Home />}></Route>
+        <Route path="/" element={user ? <Home /> : <Register />}></Route>
+        {/* <Route path="/" element={ <Home />}></Route> */}
 
         <Route
           path="/login"
