@@ -9,6 +9,7 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Header from "./components/topbar/Header";
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
+import { Messenger } from "./pages/messenger/Messenger";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -28,6 +29,10 @@ function App() {
         <Route
           path="/register"
           element={user ? <Navigate to="/" /> : <Register />}
+        ></Route>
+        <Route
+          path="/messenger"
+          element={!user ? <Navigate to="/" /> : <Messenger />}
         ></Route>
         <Route path="/profile/:username" element={<Profile2 />}></Route>
       </Routes>
