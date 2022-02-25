@@ -4,6 +4,7 @@ import { createContext, useReducer } from "react";
 import { AuthReducer } from "./AuthReducer";
 
 const INTIAL_STATE = {
+  reload: false,
   user: {
     _id: "62154288a72feb8aabaa5232",
     username: "Anshul",
@@ -11,7 +12,7 @@ const INTIAL_STATE = {
     profilePicture: "",
     converPicture: "",
     followers: [],
-    followings: ["62154612946bbb746f62d641"],
+    followings: ["62154612946bbb746f62d641", "6218884ae71ee40b87729c67"],
     isAdmin: false,
     createdAt: "2022-02-22T20:07:36.542Z",
     city: "Palampur",
@@ -32,6 +33,7 @@ export const AuthContextProvidor = ({ children }) => {
         user: state.user,
         isFetching: state.isFetching,
         error: state.error,
+        reload: false,
         dispatch,
       }}
     >
