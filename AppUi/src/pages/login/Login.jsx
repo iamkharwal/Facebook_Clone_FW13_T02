@@ -5,6 +5,7 @@ import { loginCall } from "../../apiCalls";
 import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
+import { Link } from "react-router-dom";
 export default function Login() {
   const email = useRef();
   const password = useRef();
@@ -24,11 +25,10 @@ export default function Login() {
         <div className="loginLeft">
           <p className="loginLogo">facebook</p>
           <p className="descrip">
-          Facebook helps you connect and share with the people in your life.
+            Facebook helps you connect and share with the people in your life.
           </p>
-          
         </div>
-        
+
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleClick}>
             <input
@@ -54,10 +54,11 @@ export default function Login() {
               )}
             </button>
             <span className="loginForgot">Forgot Password?</span>
-            <hr/>
-            <button className="loginRegisterButton">
-              Create a New Account
-            </button>
+            <Link to="/register" style={{ textAlign: "center" }}>
+              <button className="loginRegisterButton">
+                Create a New Account
+              </button>
+            </Link>
           </form>
         </div>
       </div>
