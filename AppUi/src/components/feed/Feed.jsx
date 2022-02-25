@@ -3,6 +3,7 @@ import Share from "../share/Share";
 import "./feed.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import StoryReel from "../story/StoryReel";
 
 export default function Feed({ username }) {
   const [posts, setPosts] = useState([]);
@@ -18,6 +19,7 @@ export default function Feed({ username }) {
 
   return (
     <div className="feed">
+      <StoryReel />
       <div className="feedWrapper">
         <Share />
         {posts.map((p) => (
