@@ -10,7 +10,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 export const Results = () => (
   <div id="results" className="search-results">
     <div className="userInfo display">
-      <div>
+      <div className="avtar">
         <Avatar />
       </div>
       <div className="userInfoDiv">
@@ -21,7 +21,7 @@ export const Results = () => (
     <hr />
     <div className="display specialDiv">
       <div className="iconDiv">
-        <FeedbackIcon />
+        <FeedbackIcon className="SideIcon"/>
       </div>
       <div>
         <h5>Give Feedback</h5>
@@ -31,7 +31,7 @@ export const Results = () => (
     <hr />
     <div className="display">
       <div className="iconDiv">
-        <SettingsIcon />
+        <SettingsIcon className="SideIcon" />
       </div>
       <div className="slideOpt">
         <h5>Setting & privacy</h5>
@@ -42,7 +42,7 @@ export const Results = () => (
     </div>
     <div className="display">
       <div className="iconDiv">
-        <HelpIcon />
+        <HelpIcon className="SideIcon" />
       </div>
       <div className="slideOpt">
         <h5>Help & support</h5>
@@ -53,7 +53,7 @@ export const Results = () => (
     </div>
     <div className="display">
       <div className="iconDiv">
-        <NightlightRoundIcon />
+        <NightlightRoundIcon className="SideIcon" />
       </div>
       <div className="slideOpt">
         <h5 >Display & accessiblity</h5>
@@ -64,7 +64,7 @@ export const Results = () => (
     </div>
     <div className="display">
       <div className="iconDiv">
-        <LogoutIcon />
+        <LogoutIcon className="SideIcon" />
       </div>
       <div className="slideOpt">
         <h5>Log Out</h5>
