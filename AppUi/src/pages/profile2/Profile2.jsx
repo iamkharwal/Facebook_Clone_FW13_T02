@@ -8,13 +8,24 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import { IoMdAddCircle } from "react-icons/io";
 import { MdModeEditOutline } from "react-icons/md";
 import { LeftSideBar } from "./LeftSideBar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Profile2() {
   const [user, setUser] = useState({});
   const { username } = useParams();
+  const { user: currentUser, dispatch } = useContext(AuthContext);
+  const [followed, setFollowed] = useState(
+    currentUser.followings.includes(user._id)
+  );
+
+  console.log(currentUser);
+
+  useEffect(() => {
+    setFollowed(currentUser.followings.includes(user._id));
+  }, [currentUser, user._id]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -25,24 +36,53 @@ export default function Profile2() {
   }, [username]);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+  const handleClick = async () => {
+    try {
+      if (followed) {
+        await axios.put(`/users/${user._id}/unfollow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "UNFOLLOW", payload: user._id });
+      } else {
+        await axios.put(`/users/${user._id}/follow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "FOLLOW", payload: user._id });
+      }
+      setFollowed(!followed);
+    } catch (err) {}
+  };
+
   return (
     <>
       <Container fluid className="shadowLg bg-white">
         <Container style={{ width: "75%" }}>
           <Col style={{ position: "relative" }}>
             <img
-              src={user.converPicture || PF + "person/noCover.png"}
+              src={
+                user.converPicture
+                  ? PF + user.converPicture
+                  : PF + "person/noCover.png"
+              }
               className="profileCoverImg img-fluid"
             />
-            <Button className="edit-cover-btn btn btn-light btn-lg rounded-5">
-              <MdModeEditOutline /> Edit Cover Photo
-            </Button>
+            {user.username == currentUser.username ? (
+              <Button className="edit-cover-btn btn btn-light btn-lg rounded-5">
+                <MdModeEditOutline /> Edit Cover Photo
+              </Button>
+            ) : (
+              ""
+            )}
           </Col>
           <Row>
             <Col md={3} className="d-flex flex-row-reverse pe-4">
               <img
                 className="profileUserImg2"
-                src={user.profilePicture || PF + "person/noAvatar.png"}
+                src={
+                  user.profilePicture
+                    ? PF + user.profilePicture
+                    : PF + "person/noAvatar.png"
+                }
                 alt=""
               />
             </Col>
@@ -67,13 +107,26 @@ export default function Profile2() {
             </Col>
             <Col md={5} className="d-flex align-items-end pe-1">
               <Col className="mt-auto" style={{ textAlign: "right" }}>
-                {" "}
-                <Button variant="primary" className="btn btn-lg">
-                  <IoMdAddCircle /> Add to Story
-                </Button>{" "}
-                <Button className="edit-button btn btn-light btn-lg">
-                  <MdModeEditOutline /> Edit Profile
-                </Button>
+                {user.username !== currentUser.username ? (
+                  <Button
+                    variant="primary"
+                    className="btn btn-lg"
+                    onClick={handleClick}
+                  >
+                    <IoMdAddCircle />
+                    {followed ? "Friends" : "Send Request"}
+                  </Button>
+                ) : (
+                  <span>
+                    {" "}
+                    <Button variant="primary" className="btn btn-lg">
+                      <IoMdAddCircle /> Add to Story
+                    </Button>{" "}
+                    <Button className="edit-button btn btn-light btn-lg">
+                      <MdModeEditOutline /> Edit Profile
+                    </Button>
+                  </span>
+                )}
               </Col>
             </Col>
           </Row>

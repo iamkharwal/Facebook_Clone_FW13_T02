@@ -13,3 +13,20 @@ export const LoginFailure = (error) => ({
   type: "LOGIN_FAILURE",
   payload: error,
 });
+
+export const Follow = (userId) => ({
+  type: "FOLLOW",
+  payload: userId,
+});
+
+export const UnFollow = (userId) => ({
+  type: "UNFOLLOW",
+  payload: userId,
+});
+
+export const Reload = () => ({
+  type: "RELOAD",
+});
+export const StopReload = () => ({
+  type: "STOPRELOAD",
+});

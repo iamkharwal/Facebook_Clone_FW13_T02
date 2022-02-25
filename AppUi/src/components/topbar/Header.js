@@ -15,6 +15,7 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { Results } from "./Res";
 
 function Header() {
   const { user } = useContext(AuthContext);
