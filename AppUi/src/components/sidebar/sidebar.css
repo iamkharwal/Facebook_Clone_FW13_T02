@@ -4,22 +4,24 @@
   top: 50px;
 }
 
-.sidebar:hover{
+.sidebar:hover {
   overflow-y: scroll;
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background-color: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(179, 179, 179);
+  background-color: rgb(192, 190, 190);
+  border-radius: 10px;
 }
 
 .sidebarWrapper {
-  padding: 20px;
+  /* padding: 5px; */
+  font-weight: 500;
 }
 
 .sidebarList {
@@ -31,11 +33,16 @@
 .sidebarListItem {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  padding: 10px;
+  /* margin-bottom: 10px; */
 }
-
+.sidebarListItem:hover {
+  background-color: rgb(235, 232, 232);
+  border-radius: 10px;
+}
 .sidebarIcon {
-  margin-right: 15px;
+  margin-right: 10px;
+  width: 25px;
 }
 
 .sidebarButton {
@@ -55,5 +62,3 @@
   margin: 0;
   list-style: none;
 }
-
-
