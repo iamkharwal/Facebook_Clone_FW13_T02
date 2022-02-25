@@ -1,0 +1,67 @@
+.storyreel{
+    display: flex;
+    overflow: hidden;
+    overflow-x: scroll;
+    padding:30px 0;
+    /* border:1px solid green; */
+}
+  
+.storyreel::-webkit-scrollbar {
+    display: none;
+}
+
+.displayStory{
+    position: absolute;
+    height: 100vh;
+    width:100vw;
+    background-color: rgb(26, 24, 24);
+    z-index: 1;
+    color: white;
+    font-size: 2vw;
+    left: 0px;
+    overflow-x: hidden;
+}
+
+.circlediv{
+    width:100%;
+    height:30px;
+    margin-top:140px;
+}
+
+.circleicon{
+    color:blue;
+    border:2px solid white;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.createStory{
+    margin-top: -2.5vw;
+    background-color: white;
+    height: 3.2vw;
+}
+
+.createStory h4{
+    padding-top: 1vw;
+}
+
+.storySymbol{
+    border-radius: 50%;
+    z-index: 10;
+    height: 5vh;
+    font-size: 1.5vw;
+    color: white;
+    border: 1px solid black;
+    background: rgb(54, 53, 53);
+}
+
+.storyCrossButton{
+    z-index:10;
+    background:rgb(65, 61, 61);
+    color:white;
+    font-size:1.2vw;
+    border-radius:50%;
+    border: 1px solid black;
+    height: 5vh;
+    width:2.5vw;
+}
