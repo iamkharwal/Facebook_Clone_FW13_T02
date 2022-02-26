@@ -1,6 +1,13 @@
 # Facebook Clone
 Masai construct week project Unit 5
 
+# Team Members
+* Atul Kharwal
+* Anshul Sharma
+* Anurag Singh
+* Upasana Kuar
+* Dheeraj Kumar Gaur
+
 # Technologies Used
 * HTML and CSS
 * JavaScript
@@ -51,7 +58,13 @@ https://user-images.githubusercontent.com/93270093/155850371-c7fe6cc8-3ef5-43cb-
 
 # Website snapshot
 
+## Login SignUp Page
+![Login Page](https://user-images.githubusercontent.com/93270093/155850726-143ef825-783f-41cd-b05f-4a5750c7af75.png)
+
+
 ## Home Page
 ![HomePage](https://user-images.githubusercontent.com/93270093/155849977-28da0732-dafb-48c7-a7d5-f630e8f4fb0d.png)
 
+## Profile Page
+![Profile Page](https://user-images.githubusercontent.com/93270093/155850684-11ff2eb3-734e-473a-9673-357b9dda6258.png)
 
