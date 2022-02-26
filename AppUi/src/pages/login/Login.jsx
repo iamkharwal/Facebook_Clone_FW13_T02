@@ -6,6 +6,7 @@ import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
 import { Link } from "react-router-dom";
+
 export default function Login() {
   const email = useRef();
   const password = useRef();
@@ -53,12 +54,19 @@ export default function Login() {
                 "Log In"
               )}
             </button>
+            <Link to="/forgotPassword">
             <span className="loginForgot">Forgot Password?</span>
             <Link to="/register" style={{ textAlign: "center" }}>
               <button className="loginRegisterButton">
                 Create a New Account
               </button>
             </Link>
+            </Link>
+            
+            <hr/>
+            <button className="loginRegisterButton">
+              Create a New Account
+            </button>
           </form>
         </div>
       </div>
