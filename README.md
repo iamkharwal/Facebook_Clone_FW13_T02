@@ -59,7 +59,7 @@ https://user-images.githubusercontent.com/93270093/155850371-c7fe6cc8-3ef5-43cb-
 ## Gaming Page
 ![Gaming Page](https://user-images.githubusercontent.com/93270093/155851353-d4792d56-eeda-44db-a39f-9d8c7cf6eba8.png)
 
-## Challenges:
+## Challenges Faced:
 - Time co-ordination
 - Getting the product data
 - Understanding code of different individuals
