@@ -7,6 +7,8 @@ import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
 import { AiOutlineLike } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
+import SettingsIcon from "@material-ui/icons/Settings";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
@@ -34,7 +36,7 @@ export default function Post({ post }) {
   const likeHandler = () => {
     try {
       axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
-    } catch (error) {}
+    } catch (error) { }
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
@@ -54,8 +56,20 @@ export default function Post({ post }) {
                 alt=""
               />
             </Link>
-            <span className="postUsername">{user.username}</span>
-            <span className="postDate">{format(post.createdAt)}</span>
+            <span className="postUsername">
+              <div>
+                {user.username}
+              </div>
+              <div className="postDate">
+                {format(post.createdAt)}
+                <span>
+                  <FiberManualRecordIcon style={{ fontSize: "5px", marginLeft: "5px" }} />
+                </span>
+                <span>
+                  <SettingsIcon className="postIcon" />
+                </span>
+              </div>
+            </span>
           </div>
           <div className="postTopRight">
             <MoreVert />
@@ -89,25 +103,71 @@ export default function Post({ post }) {
           </div>
         </div>
         <hr />
-        <Row className="text-center px-3">
+        <Row className="text-center">
           <Col md={4}>
             <Button variant="white">
-              <AiOutlineLike /> Like
+              <AiOutlineLike className="iconBig" />{" "}
+              <span style={{ fontSize: "18px" }}>Like</span>
             </Button>
           </Col>
+          <Col md={4}>
+            {" "}
+            <Button variant="white">
+              <BiComment className="iconBig" />{" "}
+              <span style={{ fontSize: "18px" }}>Comment</span>
+            </Button>
+          </Col>
+          <Col md={4}>
+            {" "}
+            <Button variant="white">
+              <RiShareForwardLine className="iconBig" />{" "}
+              <span style={{ fontSize: "18px" }}>Share</span>
+            </Button>
+          </Col>
+        </Row>
+        <hr />
+        <Row className="postLastBox">
+          <div>
+            <img
+              className="postOwnImg"
+              src={
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + "person/noAvatar.png"
+              }
+              alt=""
+            />
+          </div>
+          <div className="commentSection">
+            Write a comment...
+            <span>
+              <img
+                width="21px"
+                height="21px"
+                className="CommentPics"
+                src="assets/sticker.png"
+              />
+              <img
+                width="25px"
+                height="25px"
+                className="CommentPics"
+                src="assets/gif.png"
+              />
+              <img
+                width="25px"
+                height="25px"
+                className="CommentPics"
+                src="assets/camera.png"
+              />
 
-          <Col md={4}>
-            {" "}
-            <Button variant="white">
-              <BiComment /> Comment
-            </Button>
-          </Col>
-          <Col md={4}>
-            {" "}
-            <Button variant="white">
-              <RiShareForwardLine /> Share
-            </Button>
-          </Col>
+              <img
+                width="22px"
+                height="22px"
+                className="CommentPics"
+                src="assets/smile.png"
+              />
+            </span>
+          </div>
         </Row>
       </div>
     </div>
