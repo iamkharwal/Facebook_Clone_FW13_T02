@@ -1,7 +1,27 @@
 const router = require("express").Router();
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
+const multer = require("multer");
+const path = require("path");
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../../public/images/users"));
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
+router.post("/uploadCover", upload.single("file"), (req, res) => {
+  try {
+    return res.status(200).json("Cover photo uploaded successfully");
+  } catch (error) {
+    console.error(error);
+  }
+});
 //upadate user
 router.put("/:id", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {

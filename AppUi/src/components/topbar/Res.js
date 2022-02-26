@@ -7,7 +7,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import HelpIcon from "@mui/icons-material/Help";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
+// import { createGlobalStyle } from "styled-components";
 
 export const Results = ({ user }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
