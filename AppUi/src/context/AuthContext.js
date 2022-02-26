@@ -12,7 +12,7 @@ const INTIAL_STATE = {
     profilePicture: "",
     converPicture: "",
     followers: [],
-    followings: ["62154612946bbb746f62d641", "6218884ae71ee40b87729c67"],
+    followings: ["62154612946bbb746f62d641"],
     isAdmin: false,
     createdAt: "2022-02-22T20:07:36.542Z",
     city: "Palampur",

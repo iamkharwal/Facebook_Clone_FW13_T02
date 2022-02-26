@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
@@ -13,9 +13,14 @@ import AddIcon from "@mui/icons-material/Add";
 import ForumIcon from "@mui/icons-material/Forum";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Results } from "./Res";
+import { BsMessenger } from "react-icons/bs";
+import { FaBell } from "react-icons/fa";
+import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
+import { CgMenuGridO } from "react-icons/cg";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 function Header() {
   const { user } = useContext(AuthContext);
@@ -34,21 +39,27 @@ function Header() {
         </Link>
 
         <div className="header__input">
-          <SearchIcon />
+          <SearchIcon style={{ width: "18px" }} />
           <input placeholder="Search Facebook" type="text" />
         </div>
       </div>
 
       <div className="header__center">
-        <div className="header__option header__option--active">
-          <Link to="/">
+        <div className="header__option ">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "header__option--active" : "inactive"
+            }
+          >
             <HomeIcon fontSize="large" />
-          </Link>
+          </NavLink>
         </div>
+
         <div className="header__option">
-          <FlagIcon fontSize="large" />
+          <GroupOutlinedIcon fontSize="large" />
         </div>
-        <div className="header__option">
+        <div className="header__option ">
           <SubscriptionsIcon fontSize="large" />
         </div>
         <div className="header__option">
@@ -61,33 +72,66 @@ function Header() {
 
       <div className="header__right">
         <div className="header__info">
-          {/* <Link to={"/profile/${user.username}"}></Link> */}
-          {/* <img
-            src={
-              user.profilePicture
-                ? PF + user.profilePicture
-                : PF + "person/noAvatar.png"
-            }
-          /> */}
-          <Avatar />
+          <Link to={"/profile/" + user.username}>
+            <img
+              src={
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + "person/noAvatar.png"
+              }
+              width="40px"
+              style={{ borderRadius: "40px", border: "1px solid grey" }}
+            />
+          </Link>
           <Link
-            to="/profile/atul"
+            to={"/profile/" + user.username}
             style={{ textDecoration: "none", color: "black" }}
           >
-            <h4>Atul</h4>
-            {/* <h4>{user.username}</h4> */}
+            <strong>{user.username}</strong>
           </Link>
         </div>
-        <IconButton>
-          <AddIcon />
-        </IconButton>
-        <IconButton>
-          <ForumIcon />
-        </IconButton>
-        <IconButton>
-          <NotificationsActiveIcon />
+
+        <IconButton
+          style={{
+            background: "rgb(230,230,230)",
+            padding: "10px",
+            borderRadius: "40px",
+            color: "black",
+            marginRight: "5px",
+          }}
+        >
+          <CgMenuGridO />
         </IconButton>
         <IconButton
+          style={{
+            background: "rgb(230,230,230)",
+            padding: "10px",
+            borderRadius: "40px",
+            color: "black",
+            marginRight: "5px",
+          }}
+        >
+          <BsMessenger />
+        </IconButton>
+        <IconButton
+          style={{
+            background: "rgb(230,230,230)",
+            padding: "10px",
+            borderRadius: "40px",
+            color: "black",
+            marginRight: "5px",
+          }}
+        >
+          <FaBell />
+        </IconButton>
+        <IconButton
+          style={{
+            background: "rgb(230,230,230)",
+            padding: "10px",
+            borderRadius: "40px",
+            color: "black",
+            marginRight: "5px",
+          }}
           onClick={() => {
             setShowResults(!showResults);
           }}
@@ -95,7 +139,7 @@ function Header() {
           <ExpandMoreIcon />
         </IconButton>
       </div>
-      {/* <div>{showResults ? <Results /> : null}</div> */}
+      <div>{showResults ? <Results user={user} /> : null}</div>
     </div>
   );
 }

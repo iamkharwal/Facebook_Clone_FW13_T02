@@ -83,16 +83,17 @@
 	background-color: white;
 	padding: 2px 5px;
 }
-
-/* .avtar{
+.search-results h5{
+	font-size: 18px;
+margin: 0px;
+}
+.avtar{
 	border-radius: 50%;
 	border: 1px solid black;
-	width: 50px;
-	height: 50px;
-	box-sizing: border-box;
-	overflow: hidden;
+
+
 	align-items: center;
-} */
+}
 
 .search-results div{
     /* border: 1px solid black; */
@@ -107,12 +108,15 @@
 }
 .display:hover{
 	background-color:#e4e6eb;
+	cursor: pointer;
 }
 .display div{
-	padding: 5px;
+	padding: 10px;
 }
 .userInfo{
     padding: 15px 15px;
+	display: flex;
+	align-items: center;
 }
 
 .userInfo h3{
@@ -134,7 +138,9 @@
 .slideOpt{
 	width: 160px;
 	padding: 3px;
-	margin-left: 5px;
+	/* margin-left: 5px; */
+	display: flex;
+	align-items: center;
 }
 
 .arrowIcon{
@@ -161,6 +167,6 @@
 .SideIcon{
 	vertical-align: middle;
 	margin:0 3px;
-	margin-top: 5px;
+	margin-top: 3px;
 	size: 30px;
 }

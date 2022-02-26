@@ -33,7 +33,7 @@
 .sidebarListItem {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 8px 10px;
   /* margin-bottom: 10px; */
 }
 .sidebarListItem:hover {
@@ -42,7 +42,7 @@
 }
 .sidebarIcon {
   margin-right: 10px;
-  width: 25px;
+  width:38px;
 }
 
 .sidebarButton {
