@@ -58,7 +58,7 @@ function Header() {
 
         <div className="header__option">
           <NavLink
-            to="/requests"
+            to="/friendrequests"
             className={({ isActive }) =>
               isActive ? "header__option--active" : "inactive"
             }
