@@ -21,7 +21,6 @@ export default function Profile2() {
     currentUser.followings.includes(user._id)
   );
 
-  console.log(currentUser);
 
   useEffect(() => {
     setFollowed(currentUser.followings.includes(user._id));
@@ -67,7 +66,7 @@ export default function Profile2() {
               className="profileCoverImg img-fluid"
             />
             {user.username == currentUser.username ? (
-              <Button className="edit-cover-btn btn btn-light btn-lg rounded-5">
+              <Button className="edit-cover-btn btn btn-light  rounded-5">
                 <MdModeEditOutline /> Edit Cover Photo
               </Button>
             ) : (
@@ -87,8 +86,15 @@ export default function Profile2() {
               />
             </Col>
             <Col md={3} className="p-3">
-              <h1 className="profileInfoName">{user.username}</h1>
-              <h5 className="profileInfoDesc">196 Friends</h5>
+              <h1
+                className="profileInfoName"
+                style={{ fontSize: "40px", textTransform: "capitalize" }}
+              >
+                {user.username}
+              </h1>
+              <h6 className="profileInfoDesc">
+                {user.followings.length} Friends
+              </h6>
               <img
                 className="shareProfileImg2"
                 src="/assets/person/1.jpeg"
@@ -110,7 +116,7 @@ export default function Profile2() {
                 {user.username !== currentUser.username ? (
                   <Button
                     variant="primary"
-                    className="btn btn-lg"
+                    className="btn "
                     onClick={handleClick}
                   >
                     <IoMdAddCircle />
@@ -119,10 +125,10 @@ export default function Profile2() {
                 ) : (
                   <span>
                     {" "}
-                    <Button variant="primary" className="btn btn-lg">
+                    <Button variant="primary" className="btn ">
                       <IoMdAddCircle /> Add to Story
                     </Button>{" "}
-                    <Button className="edit-button btn btn-light btn-lg">
+                    <Button className="edit-button btn btn-light ">
                       <MdModeEditOutline /> Edit Profile
                     </Button>
                   </span>

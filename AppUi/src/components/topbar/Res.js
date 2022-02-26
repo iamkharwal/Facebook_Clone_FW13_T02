@@ -6,92 +6,142 @@ import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 import LogoutIcon from "@mui/icons-material/Logout";
 import HelpIcon from "@mui/icons-material/Help";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Link } from "react-router-dom";
 
-export const Results = () => (
-  <div id="results" className="search-results">
-    <div className="userInfo display">
-      <div className="avtar">
-        <Avatar />
+export const Results = ({ user }) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  return (
+    <div id="results" className="search-results">
+      <div className="userInfo display">
+        <div className="avtar">
+          <Link to={"/profile/" + user.username}>
+            {user.profilePicture ? (
+              <img
+                src={
+                  user.profilePicture
+                    ? PF + user.profilePicture
+                    : PF + "person/noAvatar.png"
+                }
+                width="40px"
+                style={{ borderRadius: "40px", border: "1px solid grey" }}
+              />
+            ) : (
+              <Avatar />
+            )}
+          </Link>
+        </div>
+        <div className="userInfoDiv">
+          <Link
+            to={"/profile/" + user.username}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <h4>{user.username}</h4>
+          </Link>
+        </div>
       </div>
-      <div className="userInfoDiv">
-        <h5>Anurag Singh</h5>
-        <h6>See your profile</h6>
+      <hr />
+      <div className="display specialDiv">
+        <div className="iconDiv">
+          <FeedbackIcon className="SideIcon" />
+        </div>
+        <div>
+          <h5>Give Feedback</h5>
+          <h6>Help up improve facebook</h6>
+        </div>
       </div>
-    </div>
-    <hr />
-    <div className="display specialDiv">
-      <div className="iconDiv">
-        <FeedbackIcon className="SideIcon"/>
+      <hr />
+      <div className="display">
+        <div className="iconDiv">
+          <SettingsIcon className="SideIcon" />
+        </div>
+        <div className="slideOpt">
+          <h5>Setting & privacy</h5>
+        </div>
+        <div className="arrowIcon">
+          <ArrowForwardIosIcon />
+        </div>
       </div>
-      <div>
-        <h5>Give Feedback</h5>
-        <h6>Help up improve facebook</h6>
+      <div className="display">
+        <div className="iconDiv">
+          <HelpIcon className="SideIcon" />
+        </div>
+        <div className="slideOpt">
+          <h5>Help & support</h5>
+        </div>
+        <div className="arrowIcon">
+          <ArrowForwardIosIcon />
+        </div>
       </div>
-    </div>
-    <hr />
-    <div className="display">
-      <div className="iconDiv">
-        <SettingsIcon className="SideIcon" />
+      <div className="display">
+        <div className="iconDiv">
+          <NightlightRoundIcon className="SideIcon" />
+        </div>
+        <div className="slideOpt">
+          <h5>Display & accessiblity</h5>
+        </div>
+        <div className="arrowIcon">
+          <ArrowForwardIosIcon />
+        </div>
       </div>
-      <div className="slideOpt">
-        <h5>Setting & privacy</h5>
+      <div className="display">
+        <div className="iconDiv">
+          <LogoutIcon className="SideIcon" />
+        </div>
+        <div className="slideOpt">
+          <h5>Log Out</h5>
+        </div>
+        <div className="arrowIcon">
+          <ArrowForwardIosIcon />
+        </div>
       </div>
-      <div className="arrowIcon">
-        <ArrowForwardIosIcon />
-      </div>
-    </div>
-    <div className="display">
-      <div className="iconDiv">
-        <HelpIcon className="SideIcon" />
-      </div>
-      <div className="slideOpt">
-        <h5>Help & support</h5>
-      </div>
-      <div className="arrowIcon">
-        <ArrowForwardIosIcon />
-      </div>
-    </div>
-    <div className="display">
-      <div className="iconDiv">
-        <NightlightRoundIcon className="SideIcon" />
-      </div>
-      <div className="slideOpt">
-        <h5 >Display & accessiblity</h5>
-      </div>
-      <div className="arrowIcon">
-        <ArrowForwardIosIcon />
-      </div>
-    </div>
-    <div className="display">
-      <div className="iconDiv">
-        <LogoutIcon className="SideIcon" />
-      </div>
-      <div className="slideOpt">
-        <h5>Log Out</h5>
-      </div>
-      <div className="arrowIcon">
-        <ArrowForwardIosIcon />
-      </div>
-    </div>
 
-    <div className="bottomDiv">
-      <div>
-        <a href="https://www.facebook.com/privacy/explanation/" style={{ marginRight: ".5rem" }}>Privacy </a>
-        .
-        <a href="https://www.facebook.com/policies?ref=pf" style={{ marginLeft: ".5rem", marginRight: ".5rem" }}>  Term </a>
-        .
-        <a href="https://www.facebook.com/business/" style={{ marginLeft: ".5rem", marginRight: ".5rem" }}>  Advertising </a>
-        .
-        <a href="https://www.facebook.com/help/568137493302217" style={{ marginLeft: ".5rem", marginRight: ".5rem" }}>  Ad choice </a>
-        .
-        <a href="https://www.facebook.com/policies/cookies/" style={{ marginLeft: ".5rem", marginRight: ".5rem" }}>  Cookies </a>
-      </div>
+      <div className="bottomDiv">
+        <div>
+          <a
+            href="https://www.facebook.com/privacy/explanation/"
+            style={{ marginRight: ".5rem" }}
+          >
+            Privacy{" "}
+          </a>
+          .
+          <a
+            href="https://www.facebook.com/policies?ref=pf"
+            style={{ marginLeft: ".5rem", marginRight: ".5rem" }}
+          >
+            {" "}
+            Term{" "}
+          </a>
+          .
+          <a
+            href="https://www.facebook.com/business/"
+            style={{ marginLeft: ".5rem", marginRight: ".5rem" }}
+          >
+            {" "}
+            Advertising{" "}
+          </a>
+          .
+          <a
+            href="https://www.facebook.com/help/568137493302217"
+            style={{ marginLeft: ".5rem", marginRight: ".5rem" }}
+          >
+            {" "}
+            Ad choice{" "}
+          </a>
+          .
+          <a
+            href="https://www.facebook.com/policies/cookies/"
+            style={{ marginLeft: ".5rem", marginRight: ".5rem" }}
+          >
+            {" "}
+            Cookies{" "}
+          </a>
+        </div>
 
-      <div>
-
-        <a style={{ marginRight: ".5rem" }}>More .</a>
-        <a>Meta © 2022</a>
+        <div>
+          <a style={{ marginRight: ".5rem" }}>More .</a>
+          <a>Meta © 2022</a>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};

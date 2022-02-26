@@ -7,6 +7,7 @@ import "./home.css";
 import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
+import StoryReel from "../../components/story/StoryReel";
 
 export default function Home() {
   const { user } = useContext(AuthContext);
@@ -17,10 +18,14 @@ export default function Home() {
           <Col md={3}>
             <Sidebar />
           </Col>
-          <Col md={6} style={{ padding: "20px 80px 20px 80px" }}>
-            <Feed username={user.username} />
+          <Col md={6}>
+            <Col md={10} className="m-auto">
+              <StoryReel />
+
+              <Feed username={user.username} />
+            </Col>
           </Col>
-          <Col md={3}>
+          <Col md={3} className="ps-5">
             <Rightbar />
           </Col>
         </Row>

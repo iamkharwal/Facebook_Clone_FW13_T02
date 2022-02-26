@@ -1,25 +1,26 @@
 .header{
     display: flex;
-    padding: 15px 20px;
+    padding: 7px 20px;
     justify-content: space-between;
     position: sticky;
     background-color: white;
     z-index: 100;
     top: 0;
     box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
-    position: relative;
+    
     
 }
 .header__left{
     display: flex;
-    justify-content: space-evenly;
+    width: 30%;
+        align-items: center;
 }
 
 .header__input{
     display: flex;
     align-items: center;
     background-color: #eff2f5;
-    padding:10px;
+    padding:8px;
     margin-left: 10px;
     border-radius: 999px;
 }
@@ -27,6 +28,10 @@
     border: none;
     background-color: transparent;
     outline-width: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    width: 200px;
 }
 
 .header__left  img{
@@ -34,8 +39,9 @@
 }
 .header__center{
     display: flex;
-    flex: 1;
+   
     justify-content: center;
+       width: 50%;
 }
 .header__option > .MuiSvgIcon-root{
     color: gray;
@@ -47,8 +53,10 @@
 .header__option {
     display: flex;
     align-items: center;
-    padding: 0 30px;
+    justify-content: center;
+    padding: 0 10px;
     cursor: pointer;
+    width: 18%;
 }
 
 .header__option:hover {
@@ -70,6 +78,8 @@
 .header__info{
     display: flex;
     align-items: center;
+    gap: 10px;
+        margin-right: 20px;
 }
 .header__info > h4{
     margin-left: 10px;
@@ -77,4 +87,30 @@
 
 .header__right{
     display: flex;
+    justify-content: flex-end;
+     width: 30%;
+}
+
+   .hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: black;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
