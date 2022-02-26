@@ -21,7 +21,6 @@ export default function Profile2() {
     currentUser.followings.includes(user._id)
   );
 
-
   useEffect(() => {
     setFollowed(currentUser.followings.includes(user._id));
   }, [currentUser, user._id]);
@@ -93,7 +92,7 @@ export default function Profile2() {
                 {user.username}
               </h1>
               <h6 className="profileInfoDesc">
-                {user.followings.length} Friends
+                {user.followings == null ? 0 : user.followings.length} Friends
               </h6>
               <img
                 className="shareProfileImg2"
