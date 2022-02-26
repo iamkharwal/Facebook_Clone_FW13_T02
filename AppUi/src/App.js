@@ -5,6 +5,7 @@ import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Profile2 from "./pages/profile2/Profile2";
 import Register from "./pages/register/Register";
+import {FPassword} from "./pages/frogetPassword/FPassword"
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Header from "./components/topbar/Header";
 import { AuthContext } from "./context/AuthContext";
@@ -33,6 +34,7 @@ function App() {
           }
         ></Route>
         {/* <Route path="/" element={ <Home />}></Route> */}
+        <Route path="/forgotPassword" element={ <FPassword />}></Route>
 
         <Route
           path="/login"
