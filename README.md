@@ -40,7 +40,7 @@ https://user-images.githubusercontent.com/93270093/155850371-c7fe6cc8-3ef5-43cb-
 
 # Website snapshot
 
-## Login SignUp Page
+## Login Sign-Up Page
 ![Login Page](https://user-images.githubusercontent.com/93270093/155850726-143ef825-783f-41cd-b05f-4a5750c7af75.png)
 
 
@@ -53,10 +53,10 @@ https://user-images.githubusercontent.com/93270093/155850371-c7fe6cc8-3ef5-43cb-
 ## Watch Page
 ![Watch Page](https://user-images.githubusercontent.com/93270093/155851307-38b01588-9229-48ee-9268-dc782fbfd6af.png)
 
-## MarketPlace Page
+## Market Place Page
 ![MarketPlace Page](https://user-images.githubusercontent.com/93270093/155851329-176af4c1-327f-4eb6-86d5-c96a023b637f.png)
 
-## Gaming Pag
+## Gaming Page
 ![Gaming Page](https://user-images.githubusercontent.com/93270093/155851353-d4792d56-eeda-44db-a39f-9d8c7cf6eba8.png)
 
 ## Challenges:
