@@ -50,6 +50,11 @@ https://user-images.githubusercontent.com/93270093/155850371-c7fe6cc8-3ef5-43cb-
 ## Profile Page
 ![Profile Page](https://user-images.githubusercontent.com/93270093/155850684-11ff2eb3-734e-473a-9673-357b9dda6258.png)
 
+## Watch Page
+![Watch Page](https://user-images.githubusercontent.com/93270093/155851307-38b01588-9229-48ee-9268-dc782fbfd6af.png)
+
+
+
 
 ## Challenges:
 - Time co-ordination
