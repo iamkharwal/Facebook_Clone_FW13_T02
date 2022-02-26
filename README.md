@@ -53,6 +53,8 @@ https://user-images.githubusercontent.com/93270093/155850371-c7fe6cc8-3ef5-43cb-
 ## Watch Page
 ![Watch Page](https://user-images.githubusercontent.com/93270093/155851307-38b01588-9229-48ee-9268-dc782fbfd6af.png)
 
+## MarketPlace Page
+![MarketPlace Page](https://user-images.githubusercontent.com/93270093/155851329-176af4c1-327f-4eb6-86d5-c96a023b637f.png)
 
 
 
