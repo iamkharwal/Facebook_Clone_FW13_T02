@@ -12,6 +12,8 @@ import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
 import { Messenger } from "./pages/messenger/Messenger";
 import { DisplayStoryContextProvider } from "./components/story/StoryContext";
+import FriendRequest from "./pages/FriendRequest/FriendRequest";
+import Suggestions from "./pages/Suggestions/Suggestions";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -33,8 +35,16 @@ function App() {
             )
           }
         ></Route>
+        <Route
+          path="/friendrequests"
+          element={user ? <FriendRequest /> : <Register />}
+        ></Route>
+        <Route
+          path="/suggestions"
+          element={user ? <Suggestions /> : <Register />}
+        ></Route>
         {/* <Route path="/" element={ <Home />}></Route> */}
-        <Route path="/forgotPassword" element={ <FPassword />}></Route>
+        <Route path="/forgotPassword" element={<FPassword />}></Route>
 
         <Route
           path="/login"

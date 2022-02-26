@@ -54,19 +54,14 @@ export default function Login() {
                 "Log In"
               )}
             </button>
-            <Link to="/forgotPassword">
-            <span className="loginForgot">Forgot Password?</span>
+            <Link to="/forgotPassword" style={{ textAlign: "center" }}>
+              <span className="loginForgot">Forgot Password?</span>
+            </Link>
             <Link to="/register" style={{ textAlign: "center" }}>
               <button className="loginRegisterButton">
                 Create a New Account
               </button>
             </Link>
-            </Link>
-            
-            <hr/>
-            <button className="loginRegisterButton">
-              Create a New Account
-            </button>
           </form>
         </div>
       </div>

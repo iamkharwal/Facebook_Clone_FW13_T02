@@ -8,6 +8,7 @@ import {
   Navbar,
   Nav,
   Card,
+  ListGroup,
 } from "react-bootstrap";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -20,6 +21,9 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { MdOutlineUpload } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import UploadOutlinedIcon from "@mui/icons-material/UploadOutlined";
 
 export default function Profile2() {
   const [user, setUser] = useState({});
@@ -42,7 +46,6 @@ export default function Profile2() {
   }, [currentUser, user._id]);
 
   useEffect(() => {
-    console.log(friend);
     setFriend(currentUser.friends.includes(user._id));
   }, [currentUser, user._id]);
 
@@ -103,14 +106,18 @@ export default function Profile2() {
                   <MdModeEditOutline /> Edit Cover Photo
                 </Button>
                 <Card id="coverImg" style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src="holder.js/100px180" />
                   <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
                     <Card.Text>
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
+                      <ListGroup variant="flush">
+                        <ListGroup.Item>
+                          <UploadOutlinedIcon />
+                          &nbsp; Upload Photo
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          <RiDeleteBin6Line /> Remove Photo
+                        </ListGroup.Item>
+                      </ListGroup>
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
                   </Card.Body>
                 </Card>
               </span>
@@ -138,7 +145,7 @@ export default function Profile2() {
                 {user.username}
               </h1>
               <h6 className="profileInfoDesc">
-                {user.followings == null ? 0 : user.followings.length} Friends
+                {user.friends == null ? 0 : user.friends.length} Friends
               </h6>
               <img
                 className="shareProfileImg2"

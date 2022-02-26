@@ -45,3 +45,8 @@ export const CancelReq = (userId) => ({
   type: "CANCEL_REQ",
   payload: userId,
 });
+
+export const AcceptReq = (userId) => ({
+  type: "ACCEPT_REQ",
+  payload: userId,
+});
