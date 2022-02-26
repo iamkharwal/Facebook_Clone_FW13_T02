@@ -9,12 +9,12 @@ Masai construct week project Unit 5
 * Dheeraj Kumar Gaur
 
 # Technologies Used
-* HTML and CSS
-* JavaScript
 * React js
 * MongoDb
 * Express js
 * Node js
+* HTML and CSS
+* JavaScript
 
 # Tools
 * VS Code
