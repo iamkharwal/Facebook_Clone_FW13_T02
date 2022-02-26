@@ -33,24 +33,6 @@ Masai construct week project Unit 5
 * Posts
 
 
-## Challenges:
-- Time co-ordination
-- Getting the product data
-- Understanding code of different individuals
-- Merging different people's codes
-- Logical error
-- Opportunites
-- Exposure to different ways of writing code
-- Learning new concepts
-- Exposure to collaboration
-- Code re-usability
-- Workflow
-
-it was an interesting experience for all of us working on the project.
-
-
-
-
 # Website Video
 
 https://user-images.githubusercontent.com/93270093/155850371-c7fe6cc8-3ef5-43cb-a5e1-982667384092.mp4
@@ -68,3 +50,18 @@ https://user-images.githubusercontent.com/93270093/155850371-c7fe6cc8-3ef5-43cb-
 ## Profile Page
 ![Profile Page](https://user-images.githubusercontent.com/93270093/155850684-11ff2eb3-734e-473a-9673-357b9dda6258.png)
 
+
+## Challenges:
+- Time co-ordination
+- Getting the product data
+- Understanding code of different individuals
+- Merging different people's codes
+- Logical error
+- Opportunites
+- Exposure to different ways of writing code
+- Learning new concepts
+- Exposure to collaboration
+- Code re-usability
+- Workflow
+
+it was an interesting experience for all of us working on the project.
