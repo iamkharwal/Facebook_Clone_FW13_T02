@@ -58,6 +58,9 @@
     cursor: pointer;
     width: 18%;
 }
+.header__option a{
+    color: grey !important;
+}
 
 .header__option:hover {
     background-color: #eff2f5;

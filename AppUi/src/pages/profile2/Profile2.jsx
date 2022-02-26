@@ -1,6 +1,14 @@
 /** @format */
 import "./profile2.css";
-import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Navbar,
+  Nav,
+  Card,
+} from "react-bootstrap";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Feed from "../../components/feed/Feed";
@@ -65,9 +73,22 @@ export default function Profile2() {
               className="profileCoverImg img-fluid"
             />
             {user.username == currentUser.username ? (
-              <Button className="edit-cover-btn btn btn-light  rounded-5">
-                <MdModeEditOutline /> Edit Cover Photo
-              </Button>
+              <span>
+                <Button className="edit-cover-btn btn btn-light  rounded-5">
+                  <MdModeEditOutline /> Edit Cover Photo
+                </Button>
+                <Card id="coverImg" style={{ width: "18rem" }}>
+                  <Card.Img variant="top" src="holder.js/100px180" />
+                  <Card.Body>
+                    <Card.Title>Card Title</Card.Title>
+                    <Card.Text>
+                      Some quick example text to build on the card title and
+                      make up the bulk of the card's content.
+                    </Card.Text>
+                    <Button variant="primary">Go somewhere</Button>
+                  </Card.Body>
+                </Card>
+              </span>
             ) : (
               ""
             )}

@@ -57,7 +57,14 @@ function Header() {
         </div>
 
         <div className="header__option">
-          <GroupOutlinedIcon fontSize="large" />
+          <NavLink
+            to="/requests"
+            className={({ isActive }) =>
+              isActive ? "header__option--active" : "inactive"
+            }
+          >
+            <GroupOutlinedIcon fontSize="large" />
+          </NavLink>
         </div>
         <div className="header__option ">
           <SubscriptionsIcon fontSize="large" />
@@ -66,7 +73,14 @@ function Header() {
           <StorefrontIcon fontSize="large" />
         </div>
         <div className="header__option">
-          <SupervisedUserCircleIcon fontSize="large" />
+          <NavLink
+            to="/messenger"
+            className={({ isActive }) =>
+              isActive ? "header__option--active" : "inactive"
+            }
+          >
+            <SupervisedUserCircleIcon fontSize="large" />
+          </NavLink>
         </div>
       </div>
 
