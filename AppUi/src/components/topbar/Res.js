@@ -7,9 +7,16 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import HelpIcon from "@mui/icons-material/Help";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
 
 export const Results = ({ user }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const deleteItem = () => {
+    // Clear localStorage items
+    console.log("aaa");
+    localStorage.clear();
+    window.location.href = "/";
+  };
   return (
     <div id="results" className="search-results">
       <div className="userInfo display">
@@ -88,7 +95,7 @@ export const Results = ({ user }) => {
           <LogoutIcon className="SideIcon" />
         </div>
         <div className="slideOpt">
-          <h5>Log Out</h5>
+          <h5 onClick={deleteItem}>Log Out</h5>
         </div>
         <div className="arrowIcon">
           <ArrowForwardIosIcon />
