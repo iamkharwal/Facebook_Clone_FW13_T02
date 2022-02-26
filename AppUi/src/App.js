@@ -9,16 +9,28 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Header from "./components/topbar/Header";
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
+import { DisplayStoryContextProvider } from "./components/story/StoryContext";
 
 function App() {
   const { user } = useContext(AuthContext);
 
   return (
     <div>
-      <Header />
+      {user ? <Header /> : ""}
 
       <Routes>
-        <Route path="/" element={user ? <Home /> : <Register />}></Route>
+        <Route
+          path="/"
+          element={
+            user ? (
+              <DisplayStoryContextProvider>
+                <Home />
+              </DisplayStoryContextProvider>
+            ) : (
+              <Register />
+            )
+          }
+        ></Route>
         {/* <Route path="/" element={ <Home />}></Route> */}
 
         <Route
