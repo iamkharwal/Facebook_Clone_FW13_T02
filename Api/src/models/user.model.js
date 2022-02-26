@@ -56,6 +56,18 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       enum: [1, 2, 3],
     },
+    friends: {
+      type: Array,
+      default: [],
+    },
+    pendingReq: {
+      type: Array,
+      default: [],
+    },
+    sentReq: {
+      type: Array,
+      default: [],
+    },
   },
   {
     timestamps: true,

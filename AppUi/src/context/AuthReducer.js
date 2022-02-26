@@ -48,6 +48,34 @@ export const AuthReducer = (state, action) => {
         ...state,
         reload: false,
       };
+    case "ADD_FRIEND":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          sentReq: [...state.user.sentReq, action.payload],
+        },
+      };
+    case "UN_FRIEND":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          friends: state.user.friends.filter(
+            (following) => following !== action.payload
+          ),
+        },
+      };
+    case "CANCEL_REQ":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          sentReq: state.user.sentReq.filter(
+            (following) => following !== action.payload
+          ),
+        },
+      };
     default:
       return state;
   }
