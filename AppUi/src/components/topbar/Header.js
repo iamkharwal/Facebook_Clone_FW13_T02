@@ -21,6 +21,7 @@ import { FaBell } from "react-icons/fa";
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 import { CgMenuGridO } from "react-icons/cg";
 import { IoMdArrowDropdown } from "react-icons/io";
+import Badge from "@mui/material/Badge";
 
 function Header() {
   const { user } = useContext(AuthContext);
@@ -63,7 +64,10 @@ function Header() {
               isActive ? "header__option--active" : "inactive"
             }
           >
-            <GroupOutlinedIcon fontSize="large" />
+            {" "}
+            <Badge badgeContent={4} color="primary">
+              <GroupOutlinedIcon fontSize="large" />{" "}
+            </Badge>
           </NavLink>
         </div>
         <div className="header__option ">

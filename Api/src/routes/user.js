@@ -225,4 +225,43 @@ router.put("/:id/cancelreq", async (req, res) => {
     res.status(403).send("you cant unfriend yourself");
   }
 });
+
+//find friends
+router.get("/suggestions", async (req, res) => {
+  const userId = req.query.userId;
+console.log(userId)
+  try {
+ const result = await User.find({
+   $and: [{_id:{$ne:userId}},
+     { friends: { $ne: userId } },
+     { sentReq: { $ne: userId } },
+     { pendingReq: { $ne: userId } },
+   ],
+ });
+    res.status(200).send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+//pending requestw
+router.get("/pendingrequest", async (req, res) => {
+  try {
+    const user = await User.findById(req.query.userId);
+    const pendings = await Promise.all(
+      user.pendingReq.map((friendId) => {
+        return User.findById(friendId);
+      })
+    );
+
+    let pendingList = [];
+    pendings.map((pending) => {
+      pendingList.push(pending);
+    });
+    res.status(200).json(pendingList);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;

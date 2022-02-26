@@ -76,6 +76,14 @@ export const AuthReducer = (state, action) => {
           ),
         },
       };
+    case "ACCEPT_REQ":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          friends: [...state.user.friends, action.payload],
+        },
+      };
     default:
       return state;
   }

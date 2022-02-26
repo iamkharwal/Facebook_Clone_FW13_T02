@@ -2,6 +2,7 @@ import "./sidebar.css";
 
 import { Users } from "../../dummyData";
 import CloseFriend from "../closeFriend/CloseFriend";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -10,8 +11,13 @@ export default function Sidebar() {
       <div className="sidebarWrapper">
         <ul className="sidebarList">
           <li className="sidebarListItem">
-            <img src={`${PF}friends.png`} className="sidebarIcon" />
-            <span className="sidebarListItemText">Friend</span>
+            <Link
+              to="/suggestions"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <img src={`${PF}friends.png`} className="sidebarIcon" />
+              <span className="sidebarListItemText">Find Friend</span>
+            </Link>
           </li>
           <li className="sidebarListItem">
             <img src={`${PF}groups.png`} className="sidebarIcon" />

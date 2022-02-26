@@ -46,7 +46,6 @@ export default function Profile2() {
   }, [currentUser, user._id]);
 
   useEffect(() => {
-    console.log(friend);
     setFriend(currentUser.friends.includes(user._id));
   }, [currentUser, user._id]);
 
@@ -146,7 +145,7 @@ export default function Profile2() {
                 {user.username}
               </h1>
               <h6 className="profileInfoDesc">
-                {user.followings == null ? 0 : user.followings.length} Friends
+                {user.friends == null ? 0 : user.friends.length} Friends
               </h6>
               <img
                 className="shareProfileImg2"
