@@ -32,9 +32,22 @@ export default function Profile2() {
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user._id)
   );
+  const [addFriend, setaddFriend] = useState(
+    currentUser.sentReq.includes(user._id)
+  );
+  const [friend, setFriend] = useState(currentUser.friends.includes(user._id));
 
   useEffect(() => {
     setFollowed(currentUser.followings.includes(user._id));
+  }, [currentUser, user._id]);
+
+  useEffect(() => {
+    setaddFriend(currentUser.sentReq.includes(user._id));
+  }, [currentUser, user._id]);
+
+  useEffect(() => {
+    console.log(friend);
+    setFriend(currentUser.friends.includes(user._id));
   }, [currentUser, user._id]);
 
   useEffect(() => {
@@ -46,20 +59,32 @@ export default function Profile2() {
   }, [username]);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+  const unFriend = async () => {
+    try {
+      if (friend) {
+        await axios.put(`/users/${user._id}/unfriend`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "UN_FRIEND", payload: user._id });
+      }
+      setFriend(false);
+    } catch (err) {}
+  };
+
   const handleClick = async () => {
     try {
-      if (followed) {
-        await axios.put(`/users/${user._id}/unfollow`, {
+      if (addFriend) {
+        await axios.put(`/users/${user._id}/cancelreq`, {
           userId: currentUser._id,
         });
-        dispatch({ type: "UNFOLLOW", payload: user._id });
+        dispatch({ type: "CANCEL_REQ", payload: user._id });
       } else {
-        await axios.put(`/users/${user._id}/follow`, {
+        await axios.put(`/users/${user._id}/sentReq`, {
           userId: currentUser._id,
         });
-        dispatch({ type: "FOLLOW", payload: user._id });
+        dispatch({ type: "ADD_FRIEND", payload: user._id });
       }
-      setFollowed(!followed);
+      setaddFriend(!addFriend);
     } catch (err) {}
   };
 
@@ -142,14 +167,24 @@ export default function Profile2() {
             <Col md={5} className="d-flex align-items-end pe-1">
               <Col className="mt-auto" style={{ textAlign: "right" }}>
                 {user.username !== currentUser.username ? (
-                  <Button
-                    variant="primary"
-                    className="btn "
-                    onClick={handleClick}
-                  >
-                    <IoMdAddCircle />
-                    {followed ? "Friends" : "Send Request"}
-                  </Button>
+                  friend ? (
+                    <Button
+                      onClick={unFriend}
+                      variant="primary"
+                      className="btn "
+                    >
+                      <IoMdAddCircle /> Friends
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="primary"
+                      className="btn "
+                      onClick={handleClick}
+                    >
+                      <IoMdAddCircle />
+                      {addFriend ? "Sent Request" : "Add Friend"}
+                    </Button>
+                  )
                 ) : (
                   <span>
                     {" "}

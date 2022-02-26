@@ -30,3 +30,18 @@ export const Reload = () => ({
 export const StopReload = () => ({
   type: "STOPRELOAD",
 });
+
+export const AddFriend = (userId) => ({
+  type: "ADD_FRIEND",
+  payload: userId,
+});
+
+export const UnFriend = (userId) => ({
+  type: "UN_FRIEND",
+  payload: userId,
+});
+
+export const CancelReq = (userId) => ({
+  type: "CANCEL_REQ",
+  payload: userId,
+});
