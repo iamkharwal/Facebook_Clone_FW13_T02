@@ -1,0 +1,17 @@
+[[redirects]]
+  from = "/api"
+  to = "https://fb-api-masai.herokuapp.com"
+  status = 200
+  force = true
+  signed = "API_SIGNATURE_TOKEN"
+
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200
+
+
+
+  
+
