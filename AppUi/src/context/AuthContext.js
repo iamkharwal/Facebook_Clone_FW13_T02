@@ -24,6 +24,7 @@ const INTIAL_STATE = {
   user: null,
   isFetching: false,
   error: false,
+  reload: false,
 };
 
 export const AuthContext = createContext(INTIAL_STATE);

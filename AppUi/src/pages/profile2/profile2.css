@@ -1,4 +1,19 @@
 /** @format */
+.showCard{
+  display: block;
+}
+.hideCard{
+  display: none;
+}
+#camera-icon{
+  z-index:2;
+  position: absolute;
+  margin-left: -15px;
+    border: 1px solid rgb(208, 208, 208);
+    padding: 2px;
+    border-radius: 20px;
+    background-color: white;
+}
 .sidebar2 {
   height: 85vh;
   min-height: 800px;
