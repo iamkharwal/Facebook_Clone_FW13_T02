@@ -28,7 +28,7 @@ export const Results = ({ user }) => {
               <img
                 src={
                   user.profilePicture
-                    ? PF + user.profilePicture
+                    ? PF + "users/" + user.profilePicture
                     : PF + "person/noAvatar.png"
                 }
                 width="40px"

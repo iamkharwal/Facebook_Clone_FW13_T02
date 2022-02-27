@@ -16,12 +16,17 @@
 
 .messageText {
   padding: 10px;
-  border-radius: 20px;
   background-color: #1877f2;
   color: white;
   max-width: 300px;
+  border-radius: 0px 5px 5px 5px;
 }
-
+.messageText::after {
+  border-width: 0px 0 20px 20px;
+  border-color: transparent transparent transparent #e1ffc7;
+  top: 0;
+  right: -10px;
+}
 .messageBottom {
   font-size: 12px;
 }
@@ -33,4 +38,5 @@
 .message.own .messageText {
   background-color: rgb(241, 234, 234);
   color: black;
+  border-radius: 5px 0px 5px 5px;
 }

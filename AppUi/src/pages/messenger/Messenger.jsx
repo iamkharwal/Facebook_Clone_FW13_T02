@@ -131,14 +131,22 @@ export const Messenger = () => {
                     onChange={(e) => setNewMessage(e.target.value)}
                     value={newMessage}
                   ></textarea>
-                  <button className="chatSubmitButton" onClick={handleSubmit}>
+                  <button
+                    className="chatSubmitButton btn-primary"
+                    onClick={handleSubmit}
+                  >
                     Send
                   </button>
                 </div>
               </>
             ) : (
-              <span className="noConversationText">
+              <span className="noConversationText text-center">
                 Open a conversation to start a chat.
+                <br />
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEwkrPHDxXT0JxNJDw5OvYs1SkvhNhiuasEnvKPKs_C77EzQrMx7BZlEMVPlRV7m0VP-c&usqp=CAU"
+                  alt=""
+                />
               </span>
             )}
           </div>

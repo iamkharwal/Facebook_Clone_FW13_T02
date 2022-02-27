@@ -22,7 +22,7 @@ export default function Home() {
             <Col md={10} className="m-auto">
               <StoryReel />
 
-              <Feed username={user.username} />
+              <Feed username={user._id} />
             </Col>
           </Col>
           <Col md={3} className="ps-5">
