@@ -101,7 +101,7 @@ export default function FriendRequest() {
                               <img
                                 src={
                                   e.profilePicture
-                                    ? PF + e.profilePicture
+                                    ? PF + "users/" + e.profilePicture
                                     : `${PF}person/noAvatar.png`
                                 }
                                 className="img-fluid user-img"

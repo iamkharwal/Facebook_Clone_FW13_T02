@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
@@ -25,9 +25,13 @@ import Badge from "@mui/material/Badge";
 
 function Header() {
   const { user } = useContext(AuthContext);
-
+  const [req, setReq] = useState(user.pendingReq.length);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [showResults, setShowResults] = React.useState(false);
+
+  useEffect(() => {
+    setReq(user.pendingReq.length);
+  }, [user.friends]);
 
   return (
     <div className="header">
@@ -65,7 +69,7 @@ function Header() {
             }
           >
             {" "}
-            <Badge badgeContent={user.pendingReq.length} color="primary">
+            <Badge badgeContent={req} color="primary">
               <GroupOutlinedIcon fontSize="large" />{" "}
             </Badge>
           </NavLink>

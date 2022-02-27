@@ -79,7 +79,11 @@ export default function Suggestions() {
                             <Row>
                               <Col md={3}>
                                 <img
-                                  src={`${PF}person/noAvatar.png`}
+                                  src={
+                                    e.profilePicture
+                                      ? PF + "users/" + e.profilePicture
+                                      : `${PF}person/noAvatar.png`
+                                  }
                                   className="img-fluid user-img"
                                 />
                               </Col>
