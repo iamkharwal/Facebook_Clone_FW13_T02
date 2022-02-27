@@ -65,7 +65,9 @@ export const LeftSideBar = ({ user }) => {
 
       <Card className="  p-3 shadowLg" style={{ borderRadius: "10px" }}>
         <Card.Body>
-          <Card.Title style={{ fontWeight: "700" }}>Friends</Card.Title>
+          <Card.Title style={{ fontWeight: "700" }}>
+            Friends({user.friends == null ? 0 : user.friends.length})
+          </Card.Title>
           <br />
           <Card.Text>
             <div className="rightbarFollowings">
@@ -84,7 +86,14 @@ export const LeftSideBar = ({ user }) => {
                       alt=""
                       className="rightbarFollowingImg"
                     />
-                    <span className="rightbarFollowingName">
+                    <span
+                      className="rightbarFollowingName"
+                      style={{
+                        color: "black",
+                        textTransform: "capitalize",
+                        textAlign: "center",
+                      }}
+                    >
                       {friend.username}
                     </span>
                   </div>
