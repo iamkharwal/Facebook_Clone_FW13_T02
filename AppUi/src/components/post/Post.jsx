@@ -4,15 +4,17 @@ import "./post.css";
 import { MoreVert } from "@material-ui/icons";
 import { useState, useEffect, useContext } from "react";
 import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
-import { AiOutlineLike } from "react-icons/ai";
-import { BiComment } from "react-icons/bi";
-import { RiShareForwardLine } from "react-icons/ri";
+
 import SettingsIcon from "@material-ui/icons/Settings";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
@@ -36,7 +38,7 @@ export default function Post({ post }) {
   const likeHandler = () => {
     try {
       axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
-    } catch (error) { }
+    } catch (error) {}
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
@@ -100,76 +102,38 @@ export default function Post({ post }) {
             />
             <span className="postLikeCounter">{like} people like it</span>
           </div>
-          <div className="postBottomRight">
-            <span className="postCommentText">{post.comment} comments</span>
-          </div>
+          <div className="postBottomRight"></div>
         </div>
         <hr />
         <Row className="text-center">
           <Col md={4}>
-            <Button variant="white">
-              <AiOutlineLike className="iconBig" />{" "}
-              <span style={{ fontSize: "18px" }}>Like</span>
-            </Button>
-          </Col>
-          <Col md={4}>
-            {" "}
-            <Button variant="white">
-              <BiComment className="iconBig" />{" "}
-              <span style={{ fontSize: "18px" }}>Comment</span>
-            </Button>
-          </Col>
-          <Col md={4}>
-            {" "}
-            <Button variant="white">
-              <RiShareForwardLine className="iconBig" />{" "}
-              <span style={{ fontSize: "18px" }}>Share</span>
-            </Button>
-          </Col>
-        </Row>
-        <hr />
-        <Row className="postLastBox">
-          <div>
-            <img
-              className="postOwnImg"
-              src={
-                user.profilePicture
-                  ? PF + user.profilePicture
-                  : PF + "person/noAvatar.png"
-              }
-              alt=""
-            />
-          </div>
-          <div className="commentSection">
-            Write a comment...
-            <span>
-              <img
-                width="21px"
-                height="21px"
-                className="CommentPics"
-                src="assets/sticker.png"
-              />
-              <img
-                width="25px"
-                height="25px"
-                className="CommentPics"
-                src="assets/gif.png"
-              />
-              <img
-                width="25px"
-                height="25px"
-                className="CommentPics"
-                src="assets/camera.png"
-              />
-
-              <img
-                width="22px"
-                height="22px"
-                className="CommentPics"
-                src="assets/smile.png"
-              />
+            <span
+              className={isLiked ? "text-primary" : "text-dark"}
+              style={{ fontSize: "16px", fontWeight: "400", cursor: "pointer" }}
+              onClick={likeHandler}
+            >
+              {" "}
+              {isLiked ? (
+                <ThumbUpIcon fontSize="small" />
+              ) : (
+                <ThumbUpOutlinedIcon fontSize="small" />
+              )}{" "}
+              <span>Like</span>
             </span>
-          </div>
+          </Col>
+          <Col md={4}>
+            {" "}
+            <span style={{ fontSize: "16px", fontWeight: "400" }}>
+              <ChatBubbleOutlineOutlinedIcon fontSize="small" />
+              <span>Comment</span>
+            </span>
+          </Col>
+          <Col md={4}>
+            {" "}
+            <span style={{ fontSize: "16px", fontWeight: "400" }}>
+              <ShareOutlinedIcon fontSize="small" /> <span>Share</span>
+            </span>
+          </Col>
         </Row>
       </div>
     </div>

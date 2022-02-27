@@ -35,10 +35,8 @@ export default function Share() {
       } catch (err) {}
     }
     try {
-        dispatch({ type: "RELOAD" });
       await axios.post("/posts", newPost);
-    
-      // window.location.reload();
+
     } catch (err) {}
   };
 

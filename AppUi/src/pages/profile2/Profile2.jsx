@@ -23,6 +23,8 @@ import UploadOutlinedIcon from "@mui/icons-material/UploadOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { CircularProgress } from "@material-ui/core";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
+import DoneAllOutlinedIcon from "@mui/icons-material/DoneAllOutlined";
+import DoneOutlineOutlinedIcon from "@mui/icons-material/DoneOutlineOutlined";
 
 export default function Profile2() {
   const [user, setUser] = useState({});
@@ -31,6 +33,20 @@ export default function Profile2() {
   const [show, setshow] = useState(false);
   const [cover, setcover] = useState(null);
   const [profile, setprofile] = useState(null);
+
+  const [friends, setfriends] = useState([]);
+
+  useEffect(() => {
+    const getFriends = async () => {
+      try {
+        const friendList = await axios.get("/users/friends/" + currentUser._id);
+        setfriends(friendList.data);
+      } catch (error) {
+        console.log("error: ", error);
+      }
+    };
+    getFriends();
+  }, [user._id]);
 
   const updateprofile = async (profile) => {
     const newPost = {};
@@ -236,21 +252,17 @@ export default function Profile2() {
               <h6 className="profileInfoDesc">
                 {user.friends == null ? 0 : user.friends.length} Friends
               </h6>
-              <img
-                className="shareProfileImg2"
-                src="/assets/person/1.jpeg"
-                alt=""
-              />
-              <img
-                className="shareProfileImg2"
-                src="/assets/person/1.jpeg"
-                alt=""
-              />
-              <img
-                className="shareProfileImg2"
-                src="/assets/person/1.jpeg"
-                alt=""
-              />
+              {/* {friends.map((e) => (
+                 <img
+                   className="shareProfileImg2"
+                   src={
+                     e.profilePicture
+                       ? PF + "users/" + e.profilePicture
+                       : PF + "person/noAvatar.png"
+                   }
+                   alt=""
+                 />
+               ))} */}
             </Col>
             <Col md={5} className="d-flex align-items-end pe-1">
               <Col className="mt-auto" style={{ textAlign: "right" }}>
@@ -258,19 +270,29 @@ export default function Profile2() {
                   friend ? (
                     <Button
                       onClick={unFriend}
-                      variant="primary"
-                      className="btn "
+                      variant="secondary"
+                      className="btn"
+                      style={{ fontWeight: "700" }}
                     >
-                      <IoMdAddCircle /> Friends
+                      <DoneAllOutlinedIcon /> &nbsp; Friends
                     </Button>
                   ) : (
                     <Button
-                      variant="primary"
+                      variant={addFriend ? "secondary" : "primary"}
                       className="btn "
                       onClick={handleClick}
+                      style={{ fontWeight: "700" }}
                     >
-                      <IoMdAddCircle />
-                      {addFriend ? "Sent Request" : "Add Friend"}
+                      {addFriend ? (
+                        <span>
+                          <DoneOutlineOutlinedIcon />
+                          &nbsp; Sent Request
+                        </span>
+                      ) : (
+                        <span>
+                          <IoMdAddCircle /> &nbsp; Add Friend
+                        </span>
+                      )}
                     </Button>
                   )
                 ) : (
