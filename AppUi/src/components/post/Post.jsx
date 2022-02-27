@@ -57,7 +57,9 @@ export default function Post({ post }) {
               />
             </Link>
             <span className="postUsername">
-              <div>{user.username}</div>
+              <div style={{ textTransform: "capitalize", fontWeight: "800" }}>
+                {user.username}
+              </div>
               <div className="postDate">
                 {format(post.createdAt)}
                 <span>
