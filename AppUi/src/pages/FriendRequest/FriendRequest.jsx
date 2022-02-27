@@ -38,6 +38,17 @@ export default function FriendRequest() {
     } catch (err) {}
   };
 
+  //delete request from pending request page
+
+  const deleteReq = async (userId) => {
+    try {
+      await axios.put(`/users/${userId}/cancelreq`, {
+        userId: currentUser._id,
+      });
+      dispatch({ type: "CANCEL_REQ", payload: userId });
+    } catch (err) {}
+  };
+
   return (
     <>
       <Container fluid style={{ backgroundColor: "rgb(240, 240, 240)" }}>
@@ -99,7 +110,10 @@ export default function FriendRequest() {
                               {currentUser.friends.includes(e._id) ? (
                                 ""
                               ) : (
-                                <Button variant="secondary col-12">
+                                <Button
+                                  variant="secondary col-12"
+                                  onClick={() => deleteReq(e._id)}
+                                >
                                   Delete
                                 </Button>
                               )}

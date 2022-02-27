@@ -226,18 +226,40 @@ router.put("/:id/cancelreq", async (req, res) => {
   }
 });
 
+// delete req from pending req
+router.put("/:id/deletereq", async (req, res) => {
+  if (req.body.userId !== req.params.id) {
+    try {
+      const user = await User.findById(req.params.id);
+      const currentUser = await User.findById(req.body.userId);
+      if (currentUser.pendingReq.includes(req.params.id)) {
+        await user.updateOne({ $pull: { sentReq: req.body.userId } });
+        await currentUser.updateOne({ $pull: { pending: req.params.id } });
+        res.status(200).send("friend request deleted");
+      } else {
+        res.status(403).send("this user is not your in your pending requests");
+      }
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  } else {
+    res.status(403).send("you cant delete friend request");
+  }
+});
+
 //find friends
 router.get("/suggestions", async (req, res) => {
   const userId = req.query.userId;
-console.log(userId)
+  console.log(userId);
   try {
- const result = await User.find({
-   $and: [{_id:{$ne:userId}},
-     { friends: { $ne: userId } },
-     { sentReq: { $ne: userId } },
-     { pendingReq: { $ne: userId } },
-   ],
- });
+    const result = await User.find({
+      $and: [
+        { _id: { $ne: userId } },
+        { friends: { $ne: userId } },
+        { sentReq: { $ne: userId } },
+        { pendingReq: { $ne: userId } },
+      ],
+    });
     res.status(200).send(result);
   } catch (err) {
     res.status(500).send(err);
