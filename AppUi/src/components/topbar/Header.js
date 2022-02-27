@@ -65,7 +65,7 @@ function Header() {
             }
           >
             {" "}
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={user.pendingReq.length} color="primary">
               <GroupOutlinedIcon fontSize="large" />{" "}
             </Badge>
           </NavLink>
