@@ -41,12 +41,17 @@ export const AuthReducer = (state, action) => {
     case "RELOAD":
       return {
         ...state,
-        reload: true,
+        isFetching: true,
+      };
+    case "LOAD":
+      return {
+        ...state,
+        load: true,
       };
     case "STOPRELOAD":
       return {
         ...state,
-        reload: false,
+        isFetching: false,
       };
     case "ADD_FRIEND":
       return {
@@ -55,6 +60,7 @@ export const AuthReducer = (state, action) => {
           ...state.user,
           sentReq: [...state.user.sentReq, action.payload],
         },
+        isFetching: false,
       };
     case "UN_FRIEND":
       return {
@@ -65,6 +71,7 @@ export const AuthReducer = (state, action) => {
             (following) => following !== action.payload
           ),
         },
+        isFetching: false,
       };
     case "CANCEL_REQ":
       return {
@@ -75,6 +82,18 @@ export const AuthReducer = (state, action) => {
             (following) => following !== action.payload
           ),
         },
+        isFetching: false,
+      };
+    case "DELETE_REQ":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          pendingReq: state.user.pendingReq.filter(
+            (following) => following !== action.payload
+          ),
+        },
+        isFetching: false,
       };
     case "ACCEPT_REQ":
       return {
@@ -83,6 +102,7 @@ export const AuthReducer = (state, action) => {
           ...state.user,
           friends: [...state.user.friends, action.payload],
         },
+        load: false,
       };
     default:
       return state;

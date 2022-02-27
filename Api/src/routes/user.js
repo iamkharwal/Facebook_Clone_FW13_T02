@@ -234,7 +234,7 @@ router.put("/:id/deletereq", async (req, res) => {
       const currentUser = await User.findById(req.body.userId);
       if (currentUser.pendingReq.includes(req.params.id)) {
         await user.updateOne({ $pull: { sentReq: req.body.userId } });
-        await currentUser.updateOne({ $pull: { pending: req.params.id } });
+        await currentUser.updateOne({ $pull: { pendingReq: req.params.id } });
         res.status(200).send("friend request deleted");
       } else {
         res.status(403).send("this user is not your in your pending requests");

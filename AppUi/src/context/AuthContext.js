@@ -21,8 +21,10 @@ const INTIAL_STATE = {
   //   sentReq: [],
   //   relationship: 2,
   // },
+
   user: null,
   isFetching: false,
+  load: false,
   error: false,
 };
 
