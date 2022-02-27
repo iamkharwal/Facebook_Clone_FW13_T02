@@ -94,7 +94,7 @@ function Header() {
             <img
               src={
                 user.profilePicture
-                  ? PF + user.profilePicture
+                  ? PF + "users/" + user.profilePicture
                   : PF + "person/noAvatar.png"
               }
               width="40px"
@@ -103,7 +103,11 @@ function Header() {
           </Link>
           <Link
             to={"/profile/" + user.username}
-            style={{ textDecoration: "none", color: "black" }}
+            style={{
+              textDecoration: "none",
+              color: "black",
+              textTransform: "capitalize",
+            }}
           >
             <strong>{user.username}</strong>
           </Link>

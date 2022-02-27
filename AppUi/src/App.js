@@ -58,7 +58,10 @@ function App() {
           path="/messenger"
           element={!user ? <Navigate to="/" /> : <Messenger />}
         ></Route>
-        <Route path="/profile/:username" element={<Profile2 />}></Route>
+        <Route
+          path="/profile/:username"
+          element={!user ? <Navigate to="/" /> : <Profile2 />}
+        ></Route>
       </Routes>
     </div>
   );

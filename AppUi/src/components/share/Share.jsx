@@ -35,8 +35,9 @@ export default function Share() {
       } catch (err) {}
     }
     try {
+        dispatch({ type: "RELOAD" });
       await axios.post("/posts", newPost);
-      dispatch({ type: "RELOAD" });
+    
       // window.location.reload();
     } catch (err) {}
   };
@@ -49,7 +50,7 @@ export default function Share() {
             className="shareProfileImg"
             src={
               user.profilePicture
-                ? PF + user.profilePicture
+                ? PF + "users/" + user.profilePicture
                 : PF + "person/noAvatar.png"
             }
             alt=""

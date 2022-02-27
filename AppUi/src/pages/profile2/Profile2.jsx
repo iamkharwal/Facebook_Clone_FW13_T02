@@ -10,8 +10,6 @@ import {
   Card,
   ListGroup,
 } from "react-bootstrap";
-import Topbar from "../../components/topbar/Topbar";
-import Sidebar from "../../components/sidebar/Sidebar";
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
 import { IoMdAddCircle } from "react-icons/io";
@@ -21,25 +19,85 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { MdOutlineUpload } from "react-icons/md";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import UploadOutlinedIcon from "@mui/icons-material/UploadOutlined";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { CircularProgress } from "@material-ui/core";
+import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 
 export default function Profile2() {
   const [user, setUser] = useState({});
   const { username } = useParams();
-  const { user: currentUser, dispatch } = useContext(AuthContext);
-  const [followed, setFollowed] = useState(
-    currentUser.followings.includes(user._id)
-  );
+  const { user: currentUser, reload, dispatch } = useContext(AuthContext);
+  const [show, setshow] = useState(false);
+  const [cover, setcover] = useState(null);
+  const [profile, setprofile] = useState(null);
+
+  const updateprofile = async (profile) => {
+    const newPost = {};
+    if (profile !== null) {
+      const data = new FormData();
+      const fileName = Date.now() + profile.name;
+      data.append("name", fileName);
+      data.append("file", profile);
+      newPost.img = fileName;
+
+      try {
+        await axios.post("/users/uploadCover", data);
+      } catch (err) {}
+    }
+    try {
+      let res = await axios.put(`/users/${currentUser._id}/updateuser`, {
+        userId: currentUser._id,
+        data: {
+          profilePicture: newPost.img,
+        },
+      });
+      setshow(false);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+
+      // window.location.reload();
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    updateprofile(profile);
+  }, [profile]);
+
+  const updateCover = async (cover) => {
+    const newPost = {};
+    if (cover !== null) {
+      const data = new FormData();
+      const fileName = Date.now() + cover.name;
+      data.append("name", fileName);
+      data.append("file", cover);
+      newPost.img = fileName;
+
+      try {
+        await axios.post("/users/uploadCover", data);
+      } catch (err) {}
+    }
+    try {
+      let res = await axios.put(`/users/${currentUser._id}/updateuser`, {
+        userId: currentUser._id,
+        data: {
+          converPicture: newPost.img,
+        },
+      });
+      setshow(false);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+
+      // window.location.reload();
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    updateCover(cover);
+  }, [cover]);
+
   const [addFriend, setaddFriend] = useState(
     currentUser.sentReq.includes(user._id)
   );
   const [friend, setFriend] = useState(currentUser.friends.includes(user._id));
-
-  useEffect(() => {
-    setFollowed(currentUser.followings.includes(user._id));
-  }, [currentUser, user._id]);
 
   useEffect(() => {
     setaddFriend(currentUser.sentReq.includes(user._id));
@@ -55,7 +113,7 @@ export default function Profile2() {
       setUser(res.data);
     };
     fetchUser();
-  }, [username]);
+  }, [username, currentUser.profilePicture, currentUser.converPicture]);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const unFriend = async () => {
@@ -95,26 +153,43 @@ export default function Profile2() {
             <img
               src={
                 user.converPicture
-                  ? PF + user.converPicture
+                  ? PF + "users/" + user.converPicture
                   : PF + "person/noCover.png"
               }
               className="profileCoverImg img-fluid"
             />
+
             {user.username == currentUser.username ? (
               <span>
-                <Button className="edit-cover-btn btn btn-light  rounded-5">
+                <Button
+                  className="edit-cover-btn btn btn-light  rounded-5"
+                  onClick={() => setshow(!show)}
+                >
                   <MdModeEditOutline /> Edit Cover Photo
                 </Button>
-                <Card id="coverImg" style={{ width: "18rem" }}>
+                <Card
+                  id="coverImg"
+                  style={{ width: "18rem" }}
+                  className={show ? "showCard" : "hideCard"}
+                >
                   <Card.Body>
                     <Card.Text>
                       <ListGroup variant="flush">
                         <ListGroup.Item>
-                          <UploadOutlinedIcon />
-                          &nbsp; Upload Photo
+                          <label htmlFor="file" className="shareOption">
+                            <UploadOutlinedIcon />
+                            &nbsp; Upload Photo
+                            <input
+                              style={{ display: "none" }}
+                              type="file"
+                              id="file"
+                              accept=".png,.jpeg,.jpg"
+                              onChange={(e) => setcover(e.target.files[0])}
+                            />
+                          </label>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                          <RiDeleteBin6Line /> Remove Photo
+                          <DeleteOutlinedIcon /> &nbsp; Remove Photo
                         </ListGroup.Item>
                       </ListGroup>
                     </Card.Text>
@@ -131,11 +206,25 @@ export default function Profile2() {
                 className="profileUserImg2"
                 src={
                   user.profilePicture
-                    ? PF + user.profilePicture
+                    ? PF + "users/" + user.profilePicture
                     : PF + "person/noAvatar.png"
                 }
                 alt=""
               />
+              {user.username !== currentUser.username ? (
+                ""
+              ) : (
+                <label htmlFor="file2" className="shareOption">
+                  <CameraAltOutlinedIcon id="camera-icon" />
+                  <input
+                    style={{ display: "none" }}
+                    type="file"
+                    id="file2"
+                    accept=".png,.jpeg,.jpg"
+                    onChange={(e) => setprofile(e.target.files[0])}
+                  />
+                </label>
+              )}
             </Col>
             <Col md={3} className="p-3">
               <h1

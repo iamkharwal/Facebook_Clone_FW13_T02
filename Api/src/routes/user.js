@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
     cb(null, path.join(__dirname, "../../public/images/users"));
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, req.body.name);
   },
 });
 
@@ -23,7 +23,7 @@ router.post("/uploadCover", upload.single("file"), (req, res) => {
   }
 });
 //upadate user
-router.put("/:id", async (req, res) => {
+router.put("/:id/updateuser", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     if (req.body.password) {
       try {
@@ -34,10 +34,14 @@ router.put("/:id", async (req, res) => {
       }
     }
     try {
-      const user = await User.findByIdAndUpdate(req.params.id, {
-        $set: req.body,
-      });
-      res.status(200).json("Account has been updated");
+      const user = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: req.body.data,
+        },
+        { new: true }
+      );
+      res.status(200).json(user);
     } catch (err) {
       return res.status(500).send(err);
     }

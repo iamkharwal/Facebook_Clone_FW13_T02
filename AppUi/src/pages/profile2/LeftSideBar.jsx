@@ -78,7 +78,7 @@ export const LeftSideBar = ({ user }) => {
                     <img
                       src={
                         friend.profilePicture
-                          ? PF + friend.profilePicture
+                          ? PF + "users/" + friend.profilePicture
                           : PF + "person/noAvatar.png"
                       }
                       alt=""

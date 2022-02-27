@@ -26,6 +26,7 @@ const INTIAL_STATE = {
   isFetching: false,
   load: false,
   error: false,
+  reload: false,
 };
 
 export const AuthContext = createContext(INTIAL_STATE);

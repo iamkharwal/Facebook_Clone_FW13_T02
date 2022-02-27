@@ -50,20 +50,22 @@ export default function Post({ post }) {
                 className="postProfileImg"
                 src={
                   user.profilePicture
-                    ? PF + user.profilePicture
+                    ? PF + "users/" + user.profilePicture
                     : PF + "person/noAvatar.png"
                 }
                 alt=""
               />
             </Link>
             <span className="postUsername">
-              <div>
+              <div style={{ textTransform: "capitalize", fontWeight: "800" }}>
                 {user.username}
               </div>
               <div className="postDate">
                 {format(post.createdAt)}
                 <span>
-                  <FiberManualRecordIcon style={{ fontSize: "5px", marginLeft: "5px" }} />
+                  <FiberManualRecordIcon
+                    style={{ fontSize: "5px", marginLeft: "5px" }}
+                  />
                 </span>
                 <span>
                   <SettingsIcon className="postIcon" />
