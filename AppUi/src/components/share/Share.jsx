@@ -11,7 +11,7 @@ import { useContext, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function Share() {
+export default function Share({ getPost }) {
   const { user, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const desc = useRef();
@@ -36,7 +36,7 @@ export default function Share() {
     }
     try {
       await axios.post("/posts", newPost);
-
+      getPost();
     } catch (err) {}
   };
 

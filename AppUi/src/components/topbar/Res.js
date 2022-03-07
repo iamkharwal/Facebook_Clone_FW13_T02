@@ -18,6 +18,7 @@ export const Results = ({ user }) => {
     // Clear localStorage items
     dispatch({ type: "LOGOUT" });
     localStorage.clear();
+    window.location.href = "/";
   };
   return (
     <div id="results" className="search-results">
@@ -28,7 +29,7 @@ export const Results = ({ user }) => {
               <img
                 src={
                   user.profilePicture
-                    ? PF + "users/" + user.profilePicture
+                    ? PF + user.profilePicture
                     : PF + "person/noAvatar.png"
                 }
                 width="40px"
