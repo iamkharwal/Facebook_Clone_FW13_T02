@@ -32,7 +32,13 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
     console.error(error);
   }
 });
-
+app.get("/cors", (req, res) => {
+  res.set(
+    "Access-Control-Allow-Origin",
+    "https://facebook-masai-clone.netlify.app"
+  );
+  res.send({ msg: "This has CORS enabled 🎈" });
+});
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
